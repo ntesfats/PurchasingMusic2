@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name="user_table")
@@ -38,6 +39,10 @@ public class User {
 
     @Column (name = "enabled")
     private boolean enabled;
+
+    @ManyToMany(fetch=FetchType.EAGER)
+    private Set<Sale> sales;
+
 
     public User() {
     }
