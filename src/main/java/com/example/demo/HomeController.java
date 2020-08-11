@@ -16,24 +16,31 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
+    @Autowired
+    ArtistRepository artistRepository;
+
+    @Autowired
+    SongRepository songRepository;
+
+
 //  Home Page
     @RequestMapping("/")
     public String index(Principal principal, Model model) {
         model.addAttribute("currentUser", principal.getName());
         return"index";
     }
-//
-////  Login Page
-//    @RequestMapping("/login")
-//    public String login() {
-//        return "login";
-//    }
-//
-////  Logout Page
-//    @RequestMapping("/logout")
-//    public String logout() {
-//        return "redirect:/login?logout=true";
-//    }
-//
-//
+
+//  Login Page
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+//  Logout Page
+    @RequestMapping("/logout")
+    public String logout() {
+        return "redirect:/login?logout=true";
+    }
+
+
 }

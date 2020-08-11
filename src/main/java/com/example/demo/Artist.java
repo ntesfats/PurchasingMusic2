@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 //@Table(name="Artist")
@@ -12,23 +11,17 @@ public class Artist {
 
     private String artistName;
 
-    @ManyToMany (fetch = FetchType.EAGER)
-    private Set<Song> songs;
-//    @ManyToOne (fetch = FetchType.EAGER)
-//    private Song song;
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    private Song song;
 
     public Artist() {
     }
 
-    public Artist(String artistName, Set<Song> songs) {
+    public Artist(String artistName, Song song) {
         this.artistName = artistName;
-        this.songs = songs;
+        this.song = song;
     }
-
-    //    public Artist(String artistName, Song song) {
-//        this.artistName = artistName;
-//        this.song = song;
-//    }
 
     public long getId() {
         return id;
@@ -46,20 +39,12 @@ public class Artist {
         this.artistName = artistName;
     }
 
-    public Set<Song> getSongs() {
-        return songs;
+    public Song getSong() {
+        return song;
     }
 
-    public void setSongs(Set<Song> songs) {
-        this.songs = songs;
+    public void setSong(Song song) {
+        this.song = song;
     }
-
-    //    public Song getSong() {
-//        return song;
-//    }
-//
-//    public void setSong(Song song) {
-//        this.song = song;
-//    }
 
 }

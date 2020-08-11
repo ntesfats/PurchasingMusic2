@@ -45,10 +45,8 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     Song songOne = new Song("songTitle", "songGenre", "songAlbum", "2:00");
     songRepository.save(songOne);
 
-    Set<Song> songSet = new HashSet<>();
-    songSet.add(songOne);
 
-    Artist artistOne = new Artist("artistOneName", songSet);
+    Artist artistOne = new Artist("artistOneName", songOne);
 
     artistRepository.save(artistOne);
 
@@ -59,9 +57,9 @@ public class CommandLineRunnerBean implements CommandLineRunner {
         //songRepository.save(songOne);
     saleRepository.save(firstSale);
 
-//    Set<User> user = new HashSet<>();
-//    user.add(userOne);
-//    firstSale.setUsers(user);
+    Set<User> user = new HashSet<>();
+    user.add(userOne);
+    firstSale.setUsers(user);
 
     saleRepository.save(firstSale);
 
