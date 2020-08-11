@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Song</title>
+</head>
+<body>
+<div class = "main">
+    <form action="#"
+          th:action="@{/processSong}"
+          th:object="${song}"
+          method="post"
+          enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}" />
+
+        Song Title: <input type="text" th:field="*{songTitle}" /><br />
+        Song Genre: <input type="text" th:field="*{songGenre}" /><br />
+        Song Album: <input type="text" th:field="*{songAlbum}" />
+        Song Year <input type="text" th:field="*{songYear}" />
+
+        //Assign an artist to the song
+
+        <select th:field="*{artist.id}">
+            <option th:each="artist : ${artists}"
+                    th:value="${artist.id}"
+                    th:text="${artist.name}"></option>
+        </select>
+
+        //Add a song image (headshot)
+
+        <div th:each="song : ${songs}">
+            <div th:if="${song.headshot} != null">
+                <img th:src="${song.headshot} width=80 height=80"/>
+                <br/>
+            </div>
+            <p th:text="${song.name}"></p>
+
+        </div>
+        <input type="file" name="file"/><br><br>
+        <input type="submit" value="Enter" />
+
+    </form>
+</div>
+
+</body>
+</html>
