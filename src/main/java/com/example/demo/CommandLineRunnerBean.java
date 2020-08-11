@@ -50,11 +50,13 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
     artistRepository.save(artistOne);
 
+
     Sale firstSale = new Sale(songOne,5.0);
     //firstSale.setSongPrice(5.0);
     //firstSale.setSong(songOne);
         //songOne.setSale(firstSale);
         //songRepository.save(songOne);
+
     saleRepository.save(firstSale);
 
     Set<User> user = new HashSet<>();
