@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-//@Table(name="song")
+@Table(name="song_table")
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,17 +18,18 @@ public class Song {
 
     private String songDuration;
 
-    @OneToMany (mappedBy = "song",
+    @ManyToMany (mappedBy = "songs",
     cascade = CascadeType.REMOVE,
     fetch = FetchType.EAGER)
     private Set<Artist> artists;
 
-    @OneToOne(mappedBy = "song")
-    private Sale sale;
+    @OneToMany(mappedBy = "song",
+    cascade = CascadeType.REMOVE,
+    fetch = FetchType.EAGER)
+    private Set<Sale> sales;
 
     public Song() {
     }
-
 
     public Song(String songTitle, String songGenre, String songAlbum, String songDuration) {
         this.songTitle = songTitle;
@@ -85,11 +86,12 @@ public class Song {
         this.artists = artists;
     }
 
-    public Sale getSale() {
-        return sale;
+    public Set<Sale> getSales() {
+        return sales;
     }
 
-    public void setSale(Sale sale) {
-        this.sale = sale;
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
     }
+
 }
