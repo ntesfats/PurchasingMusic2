@@ -6,20 +6,17 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-//@Table(name="Sale")
+@Table(name="sale_table")
 public class Sale {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "sale_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "song_id")
     private Song song;
 
-   //private String songTitle;
-
     private double songPrice;
-
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<User> users;
@@ -39,14 +36,6 @@ public class Sale {
     public void setId(long id) {
         this.id = id;
     }
-
-//    public String getSongTitle() {
-//        return songTitle;
-//    }
-//
-//    public void setSongTitle(String songTitle) {
-//        this.songTitle = songTitle;
-//    }
 
     public double getSongPrice() {
         return songPrice;
