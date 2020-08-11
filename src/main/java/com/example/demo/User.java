@@ -40,7 +40,9 @@ public class User {
     @Column (name = "enabled")
     private boolean enabled;
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(mappedBy = "users",
+    cascade = CascadeType.REMOVE,
+    fetch = FetchType.EAGER)
     private Set<Sale> sales;
 
 
@@ -111,5 +113,21 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
     }
 }

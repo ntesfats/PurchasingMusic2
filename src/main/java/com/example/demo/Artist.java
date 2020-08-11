@@ -1,9 +1,10 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name="Artist")
+//@Table(name="Artist")
 public class Artist {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
@@ -11,16 +12,23 @@ public class Artist {
 
     private String artistName;
 
-    @ManyToOne
-    private Song song;
+    @ManyToMany (fetch = FetchType.EAGER)
+    private Set<Song> songs;
+//    @ManyToOne (fetch = FetchType.EAGER)
+//    private Song song;
 
     public Artist() {
     }
 
-    public Artist(String artistName, Song song) {
+    public Artist(String artistName, Set<Song> songs) {
         this.artistName = artistName;
-        this.song = song;
+        this.songs = songs;
     }
+
+    //    public Artist(String artistName, Song song) {
+//        this.artistName = artistName;
+//        this.song = song;
+//    }
 
     public long getId() {
         return id;
@@ -38,11 +46,20 @@ public class Artist {
         this.artistName = artistName;
     }
 
-    public Song getSong() {
-        return song;
+    public Set<Song> getSongs() {
+        return songs;
     }
 
-    public void setSong(Song song) {
-        this.song = song;
+    public void setSongs(Set<Song> songs) {
+        this.songs = songs;
     }
+
+    //    public Song getSong() {
+//        return song;
+//    }
+//
+//    public void setSong(Song song) {
+//        this.song = song;
+//    }
+
 }
