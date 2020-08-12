@@ -12,15 +12,26 @@ public class Artist {
 
     private String artistName;
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    private String description;
+
+    private String headShotUrl;
+
+    @ManyToMany (mappedBy = "artists",
+            cascade = CascadeType.REMOVE,
+            fetch = FetchType.EAGER)
     private Set<Song> songs;
+
+    @OneToMany(mappedBy = "albumOwner",
+            cascade = CascadeType.REMOVE,
+            fetch = FetchType.EAGER)
+    private Set<Album> albums;
 
     public Artist() {
     }
 
-    public Artist(String artistName, Set<Song> songs) {
+    public Artist(String artistName, String description) {
         this.artistName = artistName;
-        this.songs = songs;
+        this.description = description;
     }
 
     public long getId() {
@@ -39,6 +50,22 @@ public class Artist {
         this.artistName = artistName;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getHeadShotUrl() {
+        return headShotUrl;
+    }
+
+    public void setHeadShotUrl(String headShotUrl) {
+        this.headShotUrl = headShotUrl;
+    }
+
     public Set<Song> getSongs() {
         return songs;
     }
@@ -47,4 +74,11 @@ public class Artist {
         this.songs = songs;
     }
 
+    public Set<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(Set<Album> albums) {
+        this.albums = albums;
+    }
 }

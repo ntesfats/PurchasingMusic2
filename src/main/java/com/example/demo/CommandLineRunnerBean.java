@@ -25,6 +25,9 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     @Autowired
     SaleRepository saleRepository;
 
+    @Autowired
+    AlbumRepository albumRepository;
+
     public void run(String... args){
 
 //  Admin
@@ -49,33 +52,61 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     roleRepository.save(userRole);
     roleRepository.save(userRole2);
 
+//    Creating Artist
+    Artist artistOne = new Artist("artistOneName", "description");
+    artistOne.setHeadShotUrl("artistHeadShotUrl");
+    artistRepository.save(artistOne);
+
+    Artist artistTwo = new Artist("artistTwoName", "description");
+    artistTwo.setHeadShotUrl("artistHeadShotUrl");
+    artistRepository.save(artistTwo);
+
+//  Creating Album
+    Album albumOne = new Album("albumOne", 2020, "album description",
+            "album Cover Url", artistOne);
+
+//  Saving Album
+    albumRepository.save(albumOne);
+
 //  Creating Songs
-    Song songOne = new Song("songTitle", "songGenre", "songAlbum", "2:00");
-    Song songTwo = new Song("songTitle2", "songGenre2", "songAlbum2", "4:00");
+    Song songOne = new Song("songTitle", "songGenre", "2:00",
+            2020, albumOne);
+    songOne.setSongImageUrl("songOneUrl");
+    Song songTwo = new Song("songTitle2", "songGenre2", "4:00",
+            2019, albumOne);
+    songTwo.setSongImageUrl("songTeoUrl");
+
     songRepository.save(songOne);
     songRepository.save(songTwo);
 
-//  Creating Set of Songs
+/*  // Creating Set of Songs
     Set<Song> songSet = new HashSet<>();
     songSet.add(songOne);
     songSet.add(songTwo);
 
-//  Creating Artist and setting up all the song they have created by the artist.
-    Artist artistOne = new Artist("artistOneName", songSet);
-
-//  Saving Artist
+  // Setting up all the song artistOne have created.
+    artistOne.setSongs(songSet);
+   // Saving Artist
     artistRepository.save(artistOne);
+ */
 
-<<<<<<< HEAD
+//   Creating Set of Artist
+     Set<Artist> artistSetForSongOne = new HashSet<>();
+     artistSetForSongOne.add(artistOne);
 
-    Sale firstSale = new Sale(songOne,5.0);
-    //firstSale.setSongPrice(5.0);
-    //firstSale.setSong(songOne);
-        //songOne.setSale(firstSale);
-        //songRepository.save(songOne);
+     Set<Artist> artistSetForSongTwo = new HashSet<>();
+     artistSetForSongTwo.add(artistOne);
+     artistSetForSongTwo.add(artistTwo);
 
-    saleRepository.save(firstSale);
-=======
+//   Setting up all the artist that are in the song
+    songOne.setArtists(artistSetForSongOne);
+    songTwo.setArtists(artistSetForSongTwo);
+
+//  Saving the Song
+    songRepository.save(songOne);
+    songRepository.save(songTwo);
+
+
 //    Creating Sale and setting the Song that are purchased
     Sale sale1 = new Sale(songOne,5.0);
     Sale sale2 = new Sale(songTwo,2.0);
@@ -99,7 +130,6 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
 //    Setting users to Sale2
     sale2.setUsers(userThatBoughtSongTwo);
->>>>>>> cd9dc2ad9ce3a5b646a2dcce67ad7634681c3234
 
 //    Saving sale1 After setting all Users.
     saleRepository.save(sale1);
