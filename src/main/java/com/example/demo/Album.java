@@ -25,7 +25,7 @@ public class Album {
 
     public Album() {}
 
-    public Album(String albumName, long albumYear, String albumDescription, String albumCoverUrl, Artist albumOwner) {
+    public Album(String albumName, long albumYear, String albumDescription, Artist albumOwner) {
         this.albumName = albumName;
         this.albumYear = albumYear;
         this.albumDescription = albumDescription;

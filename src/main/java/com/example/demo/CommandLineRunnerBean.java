@@ -34,11 +34,11 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     User admin = new User("admin", "admin@gmail.com","admin", "admin", "admin", true);
 
     //  User or Customer that have ability to purchase a music
-    User userOne = new User("user", "user@gmail.com", "password", "User", "One", true);
+    User nahom = new User("nahom", "nahom@gmail.com", "nahom", "Nahom", "Tesfatsion", true);
     User userTwo = new User("user2", "user2@gmail.com", "password", "User2", "Two", true);
 
     Role adminRole = new Role("admin", "ROLE_ADMIN");
-    Role userRole = new Role("user", "ROLE_USER");
+    Role nahomRole = new Role("nahom", "ROLE_USER");
     Role userRole2 = new Role("user2", "ROLE_USER");
 
 
@@ -46,102 +46,74 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     userRepository.save(admin);
     roleRepository.save(adminRole);
 
-    userRepository.save(userOne);
+    userRepository.save(nahom);
     userRepository.save(userTwo);
 
-    roleRepository.save(userRole);
+    roleRepository.save(nahomRole);
     roleRepository.save(userRole2);
 
 //    Creating Artist
-    Artist artistOne = new Artist("artistOneName", "description");
-    artistOne.setHeadShotUrl("artistHeadShotUrl");
-    artistRepository.save(artistOne);
+    Artist drake = new Artist("Drake", "Drake description");
+    drake.setHeadShotUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597248855/drakeHeadShot_bpsfk8.jpg");
+    artistRepository.save(drake);
 
-    Artist artistTwo = new Artist("artistTwoName", "description");
-    artistTwo.setHeadShotUrl("artistHeadShotUrl");
-    artistRepository.save(artistTwo);
+    Artist jayZ = new Artist("JAY-Z", "Jay-Z description");
+    jayZ.setHeadShotUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597255995/jayZHeadShot_gknpay.jpg");
+    artistRepository.save(jayZ);
 
 //  Creating Album
-    Album albumOne = new Album("albumOne", 2020, "album description",
-            "album Cover Url", artistOne);
+    Album scorpionAlbum = new Album("Scorpion", 2020, "Scorpion description", drake);
+        scorpionAlbum.setAlbumCoverUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597249772/Scorpion_ijyxyc.jpg");
 
 //  Saving Album
-    albumRepository.save(albumOne);
+    albumRepository.save(scorpionAlbum);
 
 //  Creating Songs
-    Song songOne = new Song("songTitle", "songGenre", "2:00",
-            2020, albumOne);
-    songOne.setSongImageUrl("songOneUrl");
-    Song songTwo = new Song("songTitle2", "songGenre2", "4:00",
-            2019, albumOne);
-    songTwo.setSongImageUrl("songTeoUrl");
+    Song survivalSong = new Song("Survival", "Hip-Hop/Rap", "2:16",
+            2018, .99, scorpionAlbum);
+    survivalSong.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250219/survivalSong_rituus.jpg");
+    Song talkUpSong = new Song("Talk Up (feat. JAY-Z)", "Hip-Hop/Rap", "3:43",
+            2018, 1.99, scorpionAlbum);
+    talkUpSong.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
-    songRepository.save(songOne);
-    songRepository.save(songTwo);
+    songRepository.save(survivalSong);
+    songRepository.save(talkUpSong);
 
-/*  // Creating Set of Songs
-    Set<Song> songSet = new HashSet<>();
-    songSet.add(songOne);
-    songSet.add(songTwo);
-
-  // Setting up all the song artistOne have created.
-    artistOne.setSongs(songSet);
-   // Saving Artist
-    artistRepository.save(artistOne);
- */
 
 //   Creating Set of Artist
-     Set<Artist> artistSetForSongOne = new HashSet<>();
-     artistSetForSongOne.add(artistOne);
+     Set<Artist> artistSetForSurvival = new HashSet<>();
+     artistSetForSurvival.add(drake);
 
-     Set<Artist> artistSetForSongTwo = new HashSet<>();
-     artistSetForSongTwo.add(artistOne);
-     artistSetForSongTwo.add(artistTwo);
+     Set<Artist> artistSetForTalkUp = new HashSet<>();
+     artistSetForTalkUp.add(drake);
+     artistSetForTalkUp.add(jayZ);
 
 //   Setting up all the artist that are in the song
-    songOne.setArtists(artistSetForSongOne);
-    songTwo.setArtists(artistSetForSongTwo);
+    survivalSong.setArtists(artistSetForSurvival);
+    talkUpSong.setArtists(artistSetForTalkUp);
 
 //  Saving the Song
-    songRepository.save(songOne);
-    songRepository.save(songTwo);
+    songRepository.save(survivalSong);
+    songRepository.save(talkUpSong);
+
+//  Creating Set of Song, (All the song the Nahom or other User are purchasing)
+    Set<Song> nahomFirstSaleAllSong = new HashSet<>();
+    nahomFirstSaleAllSong.add(survivalSong);
+    nahomFirstSaleAllSong.add(talkUpSong);
+
+    Set<Song> userTwoSale2AllSong = new HashSet<>();
+    userTwoSale2AllSong.add(survivalSong);
 
 
 //    Creating Sale and setting the Song that are purchased
-    Sale sale1 = new Sale(songOne,5.0);
-    Sale sale2 = new Sale(songTwo,2.0);
+    Sale sale1 = new Sale(nahom, 5.0, true);
+    sale1.setSongs(nahomFirstSaleAllSong);
+    Sale sale2 = new Sale(userTwo,2.0, true);
+    sale2.setSongs(userTwoSale2AllSong);
 
 //    Saving Sole1 and Sale2
     saleRepository.save(sale1);
     saleRepository.save(sale2);
-
-//    Users that purchase songOne
-    Set<User> userThatBoughtSongOne = new HashSet<>();
-    userThatBoughtSongOne.add(userOne);
-
-//  Users that purchase songTwo
-    Set<User> userThatBoughtSongTwo = new HashSet<>();
-    userThatBoughtSongTwo.add(userOne);
-    userThatBoughtSongTwo.add(userTwo);
-
-
-//    Setting users to Sale1
-    sale1.setUsers(userThatBoughtSongOne);
-
-//    Setting users to Sale2
-    sale2.setUsers(userThatBoughtSongTwo);
-
-//    Saving sale1 After setting all Users.
-    saleRepository.save(sale1);
-
-//    Saving sale2 After setting all Users.
-    saleRepository.save(sale2);
-
-
-
-
-
-
 
 
 

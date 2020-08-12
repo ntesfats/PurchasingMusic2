@@ -16,6 +16,8 @@ public class Song {
 
     private String songDuration;
 
+    private double songPrice;
+
     private long songYear;
 
     private String songImageUrl;
@@ -24,9 +26,9 @@ public class Song {
     @ManyToMany (fetch = FetchType.EAGER)
     private Set<Artist> artists;
 
-    @OneToMany(mappedBy = "song",
-    cascade = CascadeType.REMOVE,
-    fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "songs",
+        cascade = CascadeType.REMOVE,
+        fetch = FetchType.EAGER)
     private Set<Sale> sales;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -37,12 +39,14 @@ public class Song {
     public Song() {
     }
 
-    public Song(String songTitle, String songGenre, String songDuration, long songYear, Album songAlbum) {
+    public Song(String songTitle, String songGenre, String songDuration, long songYear,
+                double songPrice, Album songAlbum) {
         this.songTitle = songTitle;
         this.songGenre = songGenre;
         this.songAlbum = songAlbum;
         this.songDuration = songDuration;
         this.songYear = songYear;
+        this.songPrice = songPrice;
     }
 
     public long getId() {
@@ -84,6 +88,14 @@ public class Song {
 
     public void setSongYear(long songYear) {
         this.songYear = songYear;
+    }
+
+    public double getSongPrice() {
+        return songPrice;
+    }
+
+    public void setSongPrice(double songPrice) {
+        this.songPrice = songPrice;
     }
 
     public String getSongImageUrl() {

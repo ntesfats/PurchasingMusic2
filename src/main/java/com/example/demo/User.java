@@ -16,7 +16,7 @@ public class User {
     private long id;
 
     @Column (name = "username")
-    @Size(min= 3)
+    @Size(min= 1)
     private String username;
 
     @Column(name = "email")
@@ -40,7 +40,7 @@ public class User {
     @Column (name = "enabled")
     private boolean enabled;
 
-    @ManyToMany(mappedBy = "users",
+    @OneToMany(mappedBy = "user",
     cascade = CascadeType.REMOVE,
     fetch = FetchType.EAGER)
     private Set<Sale> sales;
@@ -48,7 +48,7 @@ public class User {
 
     public User() {
     }
-    public User(@Size(min=3) String username,
+    public User(@Size(min=1) String username,
                 @NotEmpty @NotNull String email,
                 @NotEmpty @NotNull String password,
                 @NotEmpty @NotNull String firstName,
