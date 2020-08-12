@@ -66,7 +66,7 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 //  Saving Artist
     artistRepository.save(artistOne);
 
-<<<<<<< HEAD
+
 
     Sale firstSale = new Sale(songOne,5.0);
     //firstSale.setSongPrice(5.0);
@@ -75,7 +75,7 @@ public class CommandLineRunnerBean implements CommandLineRunner {
         //songRepository.save(songOne);
 
     saleRepository.save(firstSale);
-=======
+
 //    Creating Sale and setting the Song that are purchased
     Sale sale1 = new Sale(songOne,5.0);
     Sale sale2 = new Sale(songTwo,2.0);
@@ -99,7 +99,7 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
 //    Setting users to Sale2
     sale2.setUsers(userThatBoughtSongTwo);
->>>>>>> cd9dc2ad9ce3a5b646a2dcce67ad7634681c3234
+
 
 //    Saving sale1 After setting all Users.
     saleRepository.save(sale1);

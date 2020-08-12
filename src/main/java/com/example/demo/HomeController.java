@@ -24,7 +24,7 @@ public class HomeController {
 
 
 //  Home Page
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String index(Principal principal, Model model) {
         model.addAttribute("currentUser", principal.getName());
         return"index";

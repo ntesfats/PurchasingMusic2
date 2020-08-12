@@ -1,3 +1,27 @@
 body {
     background-color: black;
+    color: white;
+    font-family: Verdana;
+}
+.card-body{
+    background-color: blueviolet;
+}
+.card-body-featured
+{
+    background-color: fuchsia;
+}
+.image-circle{
+    border-radius: 50%;
+}
+.image-artist{
+    border-radius: 50%;
+    padding: 75px;
+}
+
+.artist-info {
+    font-size: 14px;
+}
+.table-artist-song {
+    border: white;
+    padding: 75px;
 }
