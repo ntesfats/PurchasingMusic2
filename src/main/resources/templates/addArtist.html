@@ -14,15 +14,15 @@
         <input type="hidden" th:field="*{id}" />
 
         Artist Name: <input type="text" th:field="*{artistName}" /><br />
-        Artist Song: <input type="text" th:field="*{artistSong}" /><br />
         Artist Description: <input type="text" th:field="*{artistDescription}" />
+        Artist Song: <input type="text" th:field="*{artistHeadshot}" /><br />
 
         //Assign a song to the artist
 
-        <select th:field="*{artist.id}">
-            <option th:each="artist : ${artists}"
-                    th:value="${artist.id}"
-                    th:text="${artist.name}"></option>
+        <select th:field="*{song.id}">
+            <option th:each="song : ${songs}"
+                    th:value="${song.id}"
+                    th:text="${song.name}"></option>
         </select>
 
         //Add a song image (headshot)

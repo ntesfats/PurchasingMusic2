@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Popular Playlist</title>
+</head>
+<body>
+<table>
+<div class = "main">
+    <tr>
+        <th>Song Image</th>
+        <th>Song Title</th>
+        <th>Song Genre</th>
+        <th>Song Album</th>
+        <th>Song Duration</th>
+        <th>Song Sample</th>
+        <th>Buttons</th>
+    </tr>
+
+    <tr th:each="song : ${songs}">
+        <td th:text="${song.image}>"</td>
+        <td th:text="${song.songTitle}"></td>
+        <td th:text="${song.songGenre}"></td>
+        <td th:text="${song.songAlbum}"></td>
+        <td th:text="${song.songDuration}"></td>
+        <td th:text="${song.songSample}"></td>
+
+        <td>
+            <a>th:href="@{updateSong/{id}(id=$song.id)})">Update</a>
+            <a>th:href="@{deleteSong/{id}(id=$song.id)})">Delete</a>
+            <a>th:href="@{detailSong/{id}(id=$song.id)})">Detail</a>
+        </td>
+    </tr>
+</div>
+</table>
+</body>
+</html>
