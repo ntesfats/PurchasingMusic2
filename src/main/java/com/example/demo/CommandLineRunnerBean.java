@@ -61,28 +61,13 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     jayZ.setHeadShotUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597255995/jayZHeadShot_gknpay.jpg");
     artistRepository.save(jayZ);
 
-<<<<<<< HEAD
-
-=======
 //  Creating Album
     Album scorpionAlbum = new Album("Scorpion", 2020, "Scorpion description", drake);
         scorpionAlbum.setAlbumCoverUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597249772/Scorpion_ijyxyc.jpg");
->>>>>>> c66c9631965235423193b8a3331256a121250ccb
 
 //  Saving Album
     albumRepository.save(scorpionAlbum);
 
-<<<<<<< HEAD
-    saleRepository.save(firstSale);
-
-//    Creating Sale and setting the Song that are purchased
-    Sale sale1 = new Sale(songOne,5.0);
-    Sale sale2 = new Sale(songTwo,2.0);
-
-//    Saving Sole1 and Sale2
-    saleRepository.save(sale1);
-    saleRepository.save(sale2);
-=======
 //  Creating Songs
     Song survivalSong = new Song("Survival", "Hip-Hop/Rap", "2:16",
             2018, .99, scorpionAlbum);
@@ -90,7 +75,6 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     Song talkUpSong = new Song("Talk Up (feat. JAY-Z)", "Hip-Hop/Rap", "3:43",
             2018, 1.99, scorpionAlbum);
     talkUpSong.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
->>>>>>> c66c9631965235423193b8a3331256a121250ccb
 
     songRepository.save(survivalSong);
     songRepository.save(talkUpSong);
@@ -104,15 +88,9 @@ public class CommandLineRunnerBean implements CommandLineRunner {
      artistSetForTalkUp.add(drake);
      artistSetForTalkUp.add(jayZ);
 
-<<<<<<< HEAD
-//    Setting users to Sale2
-    sale2.setUsers(userThatBoughtSongTwo);
-
-=======
 //   Setting up all the artist that are in the song
     survivalSong.setArtists(artistSetForSurvival);
     talkUpSong.setArtists(artistSetForTalkUp);
->>>>>>> c66c9631965235423193b8a3331256a121250ccb
 
 //  Saving the Song
     songRepository.save(survivalSong);
@@ -142,12 +120,6 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     saleRepository.save(sale1);
     saleRepository.save(sale2);
     saleRepository.save(sale11);
-
-
-
-
-
-
 
     }
 
