@@ -14,28 +14,39 @@ public class Song {
 
     private String songGenre;
 
-    private String songAlbum;
-
     private String songDuration;
 
-    @ManyToMany (mappedBy = "songs",
-    cascade = CascadeType.REMOVE,
-    fetch = FetchType.EAGER)
+    private double songPrice;
+
+    private long songYear;
+
+    private String songImageUrl;
+
+//    private String sample;
+    @ManyToMany (fetch = FetchType.EAGER)
     private Set<Artist> artists;
 
-    @OneToMany(mappedBy = "song",
-    cascade = CascadeType.REMOVE,
-    fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "songs",
+        cascade = CascadeType.REMOVE,
+        fetch = FetchType.EAGER)
     private Set<Sale> sales;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "album_id")
+    private Album songAlbum;
+
 
     public Song() {
     }
 
-    public Song(String songTitle, String songGenre, String songAlbum, String songDuration) {
+    public Song(String songTitle, String songGenre, String songDuration, long songYear,
+                double songPrice, Album songAlbum) {
         this.songTitle = songTitle;
         this.songGenre = songGenre;
         this.songAlbum = songAlbum;
         this.songDuration = songDuration;
+        this.songYear = songYear;
+        this.songPrice = songPrice;
     }
 
     public long getId() {
@@ -62,13 +73,6 @@ public class Song {
         this.songGenre = songGenre;
     }
 
-    public String getSongAlbum() {
-        return songAlbum;
-    }
-
-    public void setSongAlbum(String songAlbum) {
-        this.songAlbum = songAlbum;
-    }
 
     public String getSongDuration() {
         return songDuration;
@@ -76,6 +80,30 @@ public class Song {
 
     public void setSongDuration(String songDuration) {
         this.songDuration = songDuration;
+    }
+
+    public long getSongYear() {
+        return songYear;
+    }
+
+    public void setSongYear(long songYear) {
+        this.songYear = songYear;
+    }
+
+    public double getSongPrice() {
+        return songPrice;
+    }
+
+    public void setSongPrice(double songPrice) {
+        this.songPrice = songPrice;
+    }
+
+    public String getSongImageUrl() {
+        return songImageUrl;
+    }
+
+    public void setSongImageUrl(String songImageUrl) {
+        this.songImageUrl = songImageUrl;
     }
 
     public Set<Artist> getArtists() {
@@ -94,4 +122,11 @@ public class Song {
         this.sales = sales;
     }
 
+    public Album getSongAlbum() {
+        return songAlbum;
+    }
+
+    public void setSongAlbum(Album songAlbum) {
+        this.songAlbum = songAlbum;
+    }
 }

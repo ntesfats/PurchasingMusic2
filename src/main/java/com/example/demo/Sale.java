@@ -12,21 +12,25 @@ public class Sale {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "song_id")
-    private Song song;
+    private double totalPrice;
 
-    private double songPrice;
+    private boolean isPurchase;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<User> users;
+    private Set<Song> songs;
+
 
     public Sale() {
     }
 
-    public Sale(Song song, double songPrice) {
-        this.song = song;
-        this.songPrice = songPrice;
+    public Sale(User user, double totalPrice, boolean isPurchase) {
+        this.user = user;
+        this.totalPrice = totalPrice;
+        this.isPurchase = isPurchase;
     }
 
     public long getId() {
@@ -37,28 +41,35 @@ public class Sale {
         this.id = id;
     }
 
-    public double getSongPrice() {
-        return songPrice;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setSongPrice(double songPrice) {
-        this.songPrice = songPrice;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public Song getSong() {
-        return song;
+    public boolean getIsPurchase() {
+        return isPurchase;
     }
 
-    public void setSong(Song song) {
-        this.song = song;
+    public void setIsPurchase(boolean purchase) {
+        isPurchase = purchase;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
+    public Set<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(Set<Song> songs) {
+        this.songs = songs;
+    }
 }
