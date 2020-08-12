@@ -98,8 +98,10 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
 //  Creating Set of Song, (All the song the Nahom or other User are purchasing)
     Set<Song> nahomFirstSaleAllSong = new HashSet<>();
+    Set<Song> nahomSecondSaleAllSong = new HashSet<>();
     nahomFirstSaleAllSong.add(survivalSong);
     nahomFirstSaleAllSong.add(talkUpSong);
+   nahomSecondSaleAllSong.add(talkUpSong);
 
     Set<Song> userTwoSale2AllSong = new HashSet<>();
     userTwoSale2AllSong.add(survivalSong);
@@ -108,12 +110,17 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 //    Creating Sale and setting the Song that are purchased
     Sale sale1 = new Sale(nahom, 5.0, true);
     sale1.setSongs(nahomFirstSaleAllSong);
+    Sale sale11 = new Sale(nahom, 4.0, true);
+    sale11.setSongs(nahomSecondSaleAllSong);
+
     Sale sale2 = new Sale(userTwo,2.0, true);
     sale2.setSongs(userTwoSale2AllSong);
 
 //    Saving Sole1 and Sale2
     saleRepository.save(sale1);
     saleRepository.save(sale2);
+    saleRepository.save(sale11);
+
 
 
 

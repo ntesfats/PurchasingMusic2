@@ -3,9 +3,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AdminController {
@@ -45,5 +43,15 @@ public class AdminController {
         songRepository.save(song);
         return "redirect:/";
     }
+    // Find song by ID
+    @RequestMapping(value = "/{song_id}", method = RequestMethod.POST)
+    public Sale getSale(@PathVariable("song_id")int song_id) {
+        return null;
+
+    }
+
+
+
+
 
 }

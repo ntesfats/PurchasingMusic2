@@ -22,11 +22,18 @@ public class HomeController {
     @Autowired
     SongRepository songRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
 
 //  Home Page
     @RequestMapping("/")
     public String index(Principal principal, Model model) {
-        model.addAttribute("currentUser", principal.getName());
+        String currentUserName = principal.getName();
+        User user = userRepository.findByUsername(currentUserName);
+
+        model.addAttribute("currentUserName", currentUserName);
+        model.addAttribute("currentUser", user);
         return"index";
     }
 
@@ -41,6 +48,24 @@ public class HomeController {
     public String logout() {
         return "redirect:/login?logout=true";
     }
+
+// Display artist by ID
+    @RequestMapping("/artist/{id}")
+    public String showArtistbyID(@PathVariable("id")long id, Model model){
+        model.addAttribute("artist", artistRepository.findById(id).get());
+        return ""; // add the artist html
+    }
+
+//Display Song by Song Genre
+    @RequestMapping("/genre/{genreName}")
+    public String showSongbyGenre(@PathVariable("genreName")String genreName, Model model){
+        model.addAttribute("songs", songRepository.findSongBysongGenre(genreName));
+
+
+        return ""; // Show song by genre
+    }
+
+
 
 
 }
