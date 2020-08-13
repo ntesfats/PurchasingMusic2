@@ -49,7 +49,7 @@ public class SortController {
 
 
     @RequestMapping("/purchaseSong/sortBy/songTitle")
-    public String sortBySongTitle(@PathVariable String songGenre, Model model, Principal principal){
+    public String sortBySongTitle(Model model, Principal principal){
         User currentUser = userRepository.findByUsername(principal.getName());
         long userId = currentUser.getId();
         List<Song> allPurchaseSongs = getAllPurchasedSongs(userId);
