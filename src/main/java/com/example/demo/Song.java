@@ -22,6 +22,8 @@ public class Song {
 
     private String songImageUrl;
 
+    private String songMusicUrl;
+
 //    private String sample;
     @ManyToMany (fetch = FetchType.EAGER)
     private Set<Artist> artists;
@@ -40,13 +42,14 @@ public class Song {
     }
 
     public Song(String songTitle, String songGenre, String songDuration, long songYear,
-                double songPrice, Album songAlbum) {
+                double songPrice, Album songAlbum,String songMusicUrl) {
         this.songTitle = songTitle;
         this.songGenre = songGenre;
         this.songAlbum = songAlbum;
         this.songDuration = songDuration;
         this.songYear = songYear;
         this.songPrice = songPrice;
+        this.songMusicUrl=songMusicUrl;
     }
 
     public long getId() {
@@ -128,5 +131,13 @@ public class Song {
 
     public void setSongAlbum(Album songAlbum) {
         this.songAlbum = songAlbum;
+    }
+
+    public String getSongMusicUrl() {
+        return songMusicUrl;
+    }
+
+    public void setSongMusicUrl(String songMusicUrl) {
+        this.songMusicUrl = songMusicUrl;
     }
 }

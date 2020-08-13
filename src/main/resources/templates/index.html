@@ -15,8 +15,8 @@
     <div class="row">
         <div class="col">
 
-            <h2>Welcome [[${currentUserName}]]</h2>
             <p th:if="${message}">[[${message}]]</p>
+
 
             <a th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">
                 <button>List All Purchase Song</button>
@@ -50,9 +50,6 @@
 <!--                    </a>-->
 <!--                </li>-->
             </ul>
-
-
-
 
         </div>
     </div>

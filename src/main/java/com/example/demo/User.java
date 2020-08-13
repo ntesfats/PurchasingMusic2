@@ -15,6 +15,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+
+    private String nameOnCard;
+
+    private String address1;
+    private String address2;
+    private String city;
+    private String state;
+    private long zip;
+    private long creditCardNo;
+    private String cvv;
+
     @Column (name = "username")
     @Size(min= 1)
     private String username;
@@ -129,5 +140,69 @@ public class User {
 
     public void setSales(Set<Sale> sales) {
         this.sales = sales;
+    }
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public void setNameOnCard(String nameOnCard) {
+        this.nameOnCard = nameOnCard;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public long getZip() {
+        return zip;
+    }
+
+    public void setZip(long zip) {
+        this.zip = zip;
+    }
+
+    public long getCreditCardNo() {
+        return creditCardNo;
+    }
+
+    public void setCreditCardNo(long creditCardNo) {
+        this.creditCardNo = creditCardNo;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
     }
 }

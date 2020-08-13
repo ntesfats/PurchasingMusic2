@@ -78,7 +78,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h4>New user Registration</h4>
+<!--                <h4>New user Registration</h4>-->
 
                 <form th:action="@{/processregister}" th:object="${user}" method="post">
                     <div class="form-group">
@@ -91,71 +91,120 @@
                             <label for="firstName"><b>First Name</b></label>
                             <input type="text" placeholder="First Name" id="firstName"
                                    th:field="*{firstName}"><br>
+                            <span id="firstName-error-message"></span>
 
                             <label for="lastName"><b>Last Name</b></label>
                             <input type="text" id="lastName" class="form-control" placeholder="Last Name"
                                    th:field="*{lastName}"><br>
 
-                            <label for="username"><b>Username</b></label>
-                            <input type="text" id="username" placeholder="Username"
-                                   th:field="*{username}"><br>
-
                             <label for="email"><b>Email</b></label>
                             <input type="text" id="email" placeholder="email@domain.com"
                                    th:field="*{email}"><br>
 
+                            <label for="username"><b>Username</b></label>
+                            <input type="text" id="username" placeholder="Username"
+                                   th:field="*{username}"><br>
+
                             <label for="psw"><b>Password</b></label>
                             <input type="password" placeholder="Enter Password" name="psw" id="psw"
                                    th:field="*{password}"><br>
+                            <span id="password-error-message"></span>
 
                             <label for="psw-repeat"><b>Repeat Password</b></label>
                             <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat"
                                    th:field="*{password}"><br>
+                            <span id="password-error-message"></span>
 
                             <hr>
+                            <div class="DTitle1">
+                                ENTER YOUR PAYMENT INFORMATION
+                            </div>
+                            <img src="https://support.savethechildren.org/images/amex_small.gif" height="35">
+                            <img src="https://support.savethechildren.org/images/payment/paypal-logo.png" height="35">
+                            <img src="https://support.savethechildren.org/wrpr/images/logos/google-pay-box-logo.png " height="35"><br>
+
+                            <label for="nameOnCard"><b>Name</b></label>
+                            <input type="text" id="nameOnCard" placeholder="Name As Appears On Card"
+                                   th:field="*{nameOnCard}"><br>
+
+                            <label for="address1"><b>Address Line 1</b></label>
+                            <input type="text" id="address1" placeholder="Address Line 1"
+                                   th:field="*{address1}"><br>
+
+                            <label for="address2"><b>Address Line 1</b></label>
+                            <input type="text" id="address2" placeholder="Address Line 2"
+                                   th:field="*{address2}"><br>
+
+                            <label for="city"><b>City</b></label>
+                            <input type="text" id="city" placeholder="City"
+                                   th:field="*{city}"><br>
+
+                            <label for="state"><b>State</b></label>
+                            <input type="text" id="state" placeholder="State"
+                                   th:field="*{state}"><br>
+
+                            <label for="zip"><b>Zip</b></label>
+                            <input type="text" id="zip" placeholder="zip"
+                                   th:field="*{zip}"><br>
+
+                            <label for="creditCardNo"><b>Credit Card Number</b></label>
+                            <input type="text" id="creditCardNo" placeholder="Credit Card Number"
+                                   th:field="*{creditCardNo}"><br>
+                            <span id="creditCard-error-message"></span>
+
+                            <label for="cvv"><b>CVV</b></label>
+                            <input type="text" id="cvv" placeholder="CVV"
+                                   th:field="*{cvv}"><br>
+
                             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                            <p>We will not charge your card unless you explicitly purchase a song from our site.</p>
+
 
                             <button type="submit" class="registerbtn">Register</button>
                         </div>
 
                         <div class="container signin">
-                            <p>Already have an account? <a href="#">Sign in</a>.</p>
+                            <p>Already have an account? <a th:href="@{/login}">Sign in</a></p>
                         </div>
 
+                        </div><br>
 
 
 
 
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="email@domain.com"
-                               th:field="*{email}"/>
 
-                        <br/>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" class="form-control" placeholder="Username"
-                               th:field="*{username}" />
 
-                        <br/>
-                    </div>
+<!--                        <label for="email">Email</label>-->
+<!--                        <input type="email" id="email" class="form-control" placeholder="email@domain.com"-->
+<!--                               th:field="*{email}"/>-->
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="text" id="password" class="form-control" placeholder="Password"
-                               th:field="*{password}"/>
+<!--                        <br/>-->
+<!--                    </div>-->
 
-                        <span id="password-error-message"></span>
-                        <br/>
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="username">Username</label>-->
+<!--                        <input type="text" id="username" class="form-control" placeholder="Username"-->
+<!--                               th:field="*{username}" />-->
 
-                    <button type="submit" class="btn btn-info">Register</button>
+<!--                        <br/>-->
+<!--                    </div>-->
 
-                </form>
-            </div>
-        </div>
-    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="password">Password</label>-->
+<!--                        <input type="text" id="password" class="form-control" placeholder="Password"-->
+<!--                               th:field="*{password}"/>-->
+
+<!--                        <span id="password-error-message"></span>-->
+<!--                        <br/>-->
+<!--                    </div>-->
+
+<!--                    <button type="submit" class="btn btn-info">Register</button>-->
+
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
     <div th:replace="base :: BootStrapScripts"></div>
