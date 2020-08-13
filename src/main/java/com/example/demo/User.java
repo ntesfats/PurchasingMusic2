@@ -63,13 +63,14 @@ public class User {
                 @NotEmpty @NotNull String email,
                 @NotEmpty @NotNull String password,
                 @NotEmpty @NotNull String firstName,
-                @NotEmpty @NotNull String lastName, boolean enabled) {
+                @NotEmpty @NotNull String lastName, boolean enabled,long creditCardNo) {
         this.username = username;
         this.email = email;
         this.setPassword(password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.enabled = enabled;
+        this.creditCardNo=creditCardNo;
     }
 
     public String getUsername() {
