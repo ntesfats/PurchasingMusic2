@@ -440,7 +440,11 @@
                                         </div>
                                         <div class="modal-body" style="color: black">
                                             Price: [[${song.songPrice}]]
-                                           We will use the credit card on file : [[${currentUser.creditCardNo}]].If you do not want to purchase with that card please cancel and add another form of payment.
+                                            <span sec:authorize="isAuthenticated()">
+                                                We will use the credit card on file :
+                                                [[${currentUser.creditCardNo}]]
+                                                If you do not want to purchase with that card please cancel and add another form of payment.
+                                            </span>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

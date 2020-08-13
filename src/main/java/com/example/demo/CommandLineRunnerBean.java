@@ -31,11 +31,11 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     public void run(String... args){
 
 //  Admin
-        User admin = new User("admin", "admin@gmail.com","admin", "admin", "admin", true);
+        User admin = new User("admin", "admin@gmail.com","admin", "admin", "admin", true,4444);
 
         //  User or Customer that have ability to purchase a music
-        User nahom = new User("nahom", "nahom@gmail.com", "nahom", "Nahom", "Tesfatsion", true);
-        User userTwo = new User("user2", "user2@gmail.com", "password", "User2", "Two", true);
+        User nahom = new User("nahom", "nahom@gmail.com", "nahom", "Nahom", "Tesfatsion", true,2222);
+        User userTwo = new User("user2", "user2@gmail.com", "password", "User2", "Two", true,5555);
 
         Role adminRole = new Role("admin", "ROLE_ADMIN");
         Role nahomRole = new Role("nahom", "ROLE_USER");

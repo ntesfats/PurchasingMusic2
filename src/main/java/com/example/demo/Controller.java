@@ -42,33 +42,56 @@ public class Controller {
     public String register(Model model) {
         User user = new User();
         model.addAttribute("user", user);
+
         return "register";
     }
-    /* @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerCustomerPost(@ModelAttribute("user") User user, Model model) {
-        List<User> userList = user.getAllUsers();
-        for (int i = 0; i < userList.size(); i++) {
-            if (user.getEmail().equals(userList.get(i).getUserEmail())) {
-                model.addAttribute("emailMsg", "Email already exists");
-                return "register";
-            }
 
-            if (user.getUsername().equals(userList.get(i).getUserName())) {
-                model.addAttribute("usernameMsg", "Username already exists");
-                return "register";
-            }
+
+//    @PostMapping("/processregister")
+//    public String processRegistrationPage(@ModelAttribute User user) {
+//        userRepository.save(user);
+//        return "redirect:/";
+//    }
+ //   @PostMapping("/processregister")
+ //  public String processRegisterationPage(
+//            @Valid @ModelAttribute("user") User user, BindingResult result, Model model)
+//    {
+//        if(result.hasErrors()){
+//            user.clearPassword();
+//            model.addAttribute("user",user);
+//            return "register";
+//        }
+//        else {
+//            model.addAttribute("user",user);
+//            model.addAttribute("message","New user account created");
+//
+//            user.setEnabled(true);
+//            userRepository.save(user);
+//            Role role = new Role(user.getUsername(),"ROLE_USER");
+//            roleRepository.save(role);
+//        }
+//        return "home";
+//    }
+
+        @RequestMapping("/ArtistPage")
+        public String ArtistPage () {
+            return "ArtistPage";
         }
-    } */
-
-    @PostMapping("/processregister")
-    public String processRegistrationPage(@ModelAttribute User user, Model model){
+    @RequestMapping("/processregister")
+    public String processRegistrationPage(@ModelAttribute User user, BindingResult result, Model model){
+        if(result.hasErrors()){
+            user.clearPassword();
+            model.addAttribute("user", user);
+            return "register";
+        }
         userRepository.save(user);
         model.addAttribute("message","New user account created");
 
         user.setEnabled(true);
-                userRepository.save(user);
-                Role role = new Role(user.getUsername(),"ROLE_USER");
-                roleRepository.save(role);
+        userRepository.save(user);
+        Role role = new Role(user.getUsername(),"ROLE_USER");
+        roleRepository.save(role);
+
         return "redirect:/";
     }
 
@@ -85,10 +108,6 @@ public class Controller {
         saleRepository.save(newSale);
 
         return "redirect:/";
-
-
-
     }
-
 
 }
