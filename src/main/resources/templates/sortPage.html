@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorting Page</title>
+</head>
+<body>
+    <th:block th:if="sortedByGenre">
+        <ul th:each="song : ${sortedByGenre}">
+            <li>[[${song.songTitle}]]</li>
+        </ul>
+    </th:block>
+
+
+
+</body>
+</html>

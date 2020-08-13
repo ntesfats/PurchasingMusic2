@@ -39,15 +39,18 @@ public class SortController {
         return "songPurchase";
     }
 
-    /*@RequestMapping("/purchaseSong/sortBy/songGenre")
-    public String sortByGenre(@PathVariable String songGenre, Model model){
 
+    @RequestMapping("/purchaseSong/sortBy/songTitle")
+    public String sortBySongTitle(@PathVariable String songGenre, Model model){
+
+        //model.addAttribute("sortedByTitle", );
+        return "sortPage";
     }
 
 
-    @RequestMapping("/purchaseSong/sortBy/songTitle")
-    public String sortBySongTtile(@PathVariable String songGenre, Model model){
-
+   /*
+    @RequestMapping("/purchaseSong/sortBy/songGenre")
+    public String sortByGenre(@PathVariable String songGenre, Model model){
 
     }
 
@@ -68,6 +71,7 @@ public class SortController {
 
     private HashSet<Song> getAllPurchasedSongs(long id) {
         User user = userRepository.findById(id).get();
+
         Iterable<Sale> allSales = user.getSales();
 
         HashSet<Song> allPurchaseSongs = new HashSet<Song>();
@@ -82,6 +86,13 @@ public class SortController {
         }
         return allPurchaseSongs;
     }
+
+    /*private HashSet<Song> sortSongsBy(HashSet<Song> allSongs, String by) {
+        if (by.equals("genre")) {
+
+        }
+    }*/
+
 
 
 

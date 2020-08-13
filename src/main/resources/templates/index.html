@@ -20,11 +20,37 @@
 
             <a th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">
                 <button>List All Purchase Song</button>
-            </a>
+            </a> <br>
 
-<!--            <a th:href="@{/purchaseSong/sortBy/songTitle}">-->
-<!--                <button>List All Purchase Song</button>-->
-<!--            </a>-->
+            Sort By:
+            <ul>
+                <li>
+                    <a th:href="@{/purchaseSong/sortBy/songTitle}">
+                        <button>Song Title</button>
+                    </a>
+                </li>
+<!--                <li>-->
+<!--                    <a th:href="@{/purchaseSong/sortBy/songGenre}">-->
+<!--                        <button>Song Genre</button>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a th:href="@{/purchaseSong/sortBy/songAlbum}">-->
+<!--                        <button>Song Album</button>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a th:href="@{/purchaseSong/sortBy/artistName}">-->
+<!--                        <button>Artist Name</button>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a th:href="@{/purchaseSong/sortBy/songDuration}">-->
+<!--                        <button>Song Duration</button>-->
+<!--                    </a>-->
+<!--                </li>-->
+            </ul>
+
 
 
 

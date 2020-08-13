@@ -10,7 +10,7 @@ public class Controller {
 
     @RequestMapping("/")
     public String home() {
-        return"home";
+        return"Home";
     }
     @RequestMapping("/ArtistPage")
     public String ArtistPage(){
