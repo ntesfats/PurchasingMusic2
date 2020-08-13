@@ -21,17 +21,11 @@ public class Controller {
     RoleRepository roleRepository;
     @Autowired
     SaleRepository saleRepository;
-//
-//    @RequestMapping("/")
-//    public String home(Model model) {
-//        model.addAttribute("songs",songRepository.findAll());
-//        return"Home";
-//    }
 
     @RequestMapping("/")
     public String home(Model model, Principal principal) {
-        model.addAttribute("songs",songRepository.findAll());
-        if(principal!=null) {
+        model.addAttribute("songs", songRepository.findAll());
+        if (principal != null) {
             User currentUser = userRepository.findByUsername(principal.getName());
             model.addAttribute("currentUser", currentUser);
         }
@@ -47,55 +41,30 @@ public class Controller {
     }
 
 
-//    @PostMapping("/processregister")
-//    public String processRegistrationPage(@ModelAttribute User user) {
-//        userRepository.save(user);
-//        return "redirect:/";
-//    }
- //   @PostMapping("/processregister")
- //  public String processRegisterationPage(
-//            @Valid @ModelAttribute("user") User user, BindingResult result, Model model)
-//    {
-//        if(result.hasErrors()){
-//            user.clearPassword();
-//            model.addAttribute("user",user);
-//            return "register";
-//        }
-//        else {
-//            model.addAttribute("user",user);
-//            model.addAttribute("message","New user account created");
-//
-//            user.setEnabled(true);
-//            userRepository.save(user);
-//            Role role = new Role(user.getUsername(),"ROLE_USER");
-//            roleRepository.save(role);
-//        }
-//        return "home";
-//    }
+    @RequestMapping("/ArtistPage")
+    public String ArtistPage() {
+        return "ArtistPage";
+    }
 
-        @RequestMapping("/ArtistPage")
-        public String ArtistPage () {
-            return "ArtistPage";
-        }
     @RequestMapping("/processregister")
-    public String processRegistrationPage(@ModelAttribute User user, BindingResult result, Model model){
-        if(result.hasErrors()){
+    public String processRegistrationPage(@ModelAttribute User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
             user.clearPassword();
             model.addAttribute("user", user);
             return "register";
         }
         userRepository.save(user);
-        model.addAttribute("message","New user account created");
+        model.addAttribute("message", "New user account created");
 
         user.setEnabled(true);
         userRepository.save(user);
-        Role role = new Role(user.getUsername(),"ROLE_USER");
+        Role role = new Role(user.getUsername(), "ROLE_USER");
         roleRepository.save(role);
 
         return "redirect:/";
     }
 
-    
+
     @RequestMapping("/purchase/song/{id}")
     public String purchaseSong(@PathVariable long id, Principal principal, Model model) {
         User currentUser = userRepository.findByUsername(principal.getName());
