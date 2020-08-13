@@ -44,26 +44,26 @@ public class Controller {
     public String register(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-
-        return"registerUser";
+        return"register";
     }
 
     @PostMapping("/processregister")
 <<<<<<< HEAD
-    public String processRegistrationPage(@ModelAttribute User user){
+    public String processRegistrationPage(@ModelAttribute User user, Model model){
         userRepository.save(user);
-        return "index";
+        model.addAttribute("message","New user account created");
+        return "redirect:/";
     }
-=======
-    public String processRegisterationPage(
-            @Valid @ModelAttribute("user") User user, BindingResult result, Model model)
-    {
-        if(result.hasErrors()){
-            user.clearPassword();
-            model.addAttribute("user",user);
-            return "register";
-        }
-        else {
+//=======
+//    public String processRegisterationPage(
+//            @Valid @ModelAttribute("user") User user, BindingResult result, Model model)
+//    {
+//        if(result.hasErrors()){
+//            user.clearPassword();
+//            model.addAttribute("user",user);
+//            return "register";
+//        }
+//        else {
             model.addAttribute("user",user);
             model.addAttribute("message","New user account created");
 
