@@ -35,11 +35,6 @@ public class Controller {
     @PostMapping("/processregister")
     public String processRegistrationPage(@ModelAttribute User user){
         userRepository.save(user);
-        userid = user.getId();
         return "index";
-    }
-    @RequestMapping("/ArtistPage")
-    public String ArtistPage(){
-        return "ArtistPage";
     }
 }
