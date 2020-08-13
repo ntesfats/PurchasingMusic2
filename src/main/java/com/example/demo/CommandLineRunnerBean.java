@@ -126,9 +126,9 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
 
 //    Creating Sale and setting the Song that are purchased
-        Sale sale1 = new Sale(nahom, 5.0, true);
+        Sale sale1 = new Sale(nahom, 5.0, false);
         sale1.setSongs(nahomFirstSaleAllSong);
-        Sale sale11 = new Sale(nahom, 4.0, true);
+        Sale sale11 = new Sale(nahom, 4.0, false);
         sale11.setSongs(nahomSecondSaleAllSong);
 
         Sale sale2 = new Sale(userTwo,2.0, true);
