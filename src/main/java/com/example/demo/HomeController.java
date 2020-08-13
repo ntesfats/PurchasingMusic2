@@ -29,11 +29,15 @@ public class HomeController {
 //  Home Page
     @RequestMapping("/index")
     public String index(Principal principal, Model model) {
-        String currentUserName = principal.getName();
-        User user = userRepository.findByUsername(currentUserName);
+        if (principal != null) {
+            String currentUserName = principal.getName();
 
-        model.addAttribute("currentUserName", currentUserName);
-        model.addAttribute("currentUser", user);
+            User user = userRepository.findByUsername(currentUserName);
+
+            model.addAttribute("currentUserName", currentUserName);
+            model.addAttribute("currentUser", user);
+        }
+
         return"index";
     }
 

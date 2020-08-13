@@ -12,6 +12,14 @@
         </ul>
     </th:block>
 
+    <th:block th:if="sortedByTitle">
+        <ul th:each="song : ${sortedByTitle}">
+            <li>[[${song.songTitle}]]</li>
+        </ul>
+    </th:block>
+
+    sortedByTitle
+
 
 
 </body>

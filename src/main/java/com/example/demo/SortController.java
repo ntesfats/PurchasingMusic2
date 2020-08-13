@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.security.Principal;
+import java.util.*;
 
 @Controller
 public class SortController {
@@ -27,12 +27,20 @@ public class SortController {
     @Autowired
     SaleRepository saleRepository;
 
+//    @RequestMapping("/index")
+//    public String index(Principal principal, Model model) {
+//        if (principal != null) {
+//            model.addAttribute("currentUser", userRepository.
+//                    findByUsername(principal.getName()));
+//        }
+//
+//        return "index";
+//    }
 
 
     @RequestMapping("purchaseSongs/{id}")
     public String showPurchasedSongs(@PathVariable("id")long id, Model model){
-        HashSet<Song> allPurchaseSongs = getAllPurchasedSongs(id);
-
+        List<Song> allPurchaseSongs = getAllPurchasedSongs(id);
 
         model.addAttribute("purchasedSongs", allPurchaseSongs);
 
@@ -41,49 +49,59 @@ public class SortController {
 
 
     @RequestMapping("/purchaseSong/sortBy/songTitle")
-    public String sortBySongTitle(@PathVariable String songGenre, Model model){
+    public String sortBySongTitle(@PathVariable String songGenre, Model model, Principal principal){
+        User currentUser = userRepository.findByUsername(principal.getName());
+        long userId = currentUser.getId();
+        List<Song> allPurchaseSongs = getAllPurchasedSongs(userId);
 
-        //model.addAttribute("sortedByTitle", );
+        List<Song> sortedByTitle = getAllPurchasedSongSortedByTitle(allPurchaseSongs);
+        model.addAttribute("sortedByTitle", sortedByTitle);
         return "sortPage";
     }
 
 
-   /*
-    @RequestMapping("/purchaseSong/sortBy/songGenre")
-    public String sortByGenre(@PathVariable String songGenre, Model model){
+//   /*
+//    //@RequestMapping("/purchaseSong/sortBy/songGenre")
+//    public String sortByGenre(@PathVariable String songGenre, Model model){
+//
+//    }
+//
+//    //@RequestMapping("/purchaseSong/sortBy/albumName")
+//    public String sortByAlbumName(@PathVariable String songGenre, Model model){
+//
+//    }
+//
+//    //@RequestMapping("/purchaseSong/sortBy/artistName")
+//    public String sortByArtistName(@PathVariable String songGenre, Model model){
+//
+//    //}
+//
+//    //@RequestMapping("/purchaseSong/sortBy/songDuration")
+//    //public String sortByDuration(@PathVariable String songGenre, Model model){
+//
+//    //}*/
 
-    }
-
-    @RequestMapping("/purchaseSong/sortBy/albumName")
-    public String sortByAlbumName(@PathVariable String songGenre, Model model){
-
-    }
-
-    @RequestMapping("/purchaseSong/sortBy/artistName")
-    public String sortByArtistName(@PathVariable String songGenre, Model model){
-
-    }
-
-    @RequestMapping("/purchaseSong/sortBy/songDuration")
-    public String sortByDuration(@PathVariable String songGenre, Model model){
-
-    }*/
-
-    private HashSet<Song> getAllPurchasedSongs(long id) {
+    private List<Song> getAllPurchasedSongs(long id) {
         User user = userRepository.findById(id).get();
 
         Iterable<Sale> allSales = user.getSales();
 
-        HashSet<Song> allPurchaseSongs = new HashSet<Song>();
+        List<Song> allPurchaseSongs = new ArrayList<Song>();
 
         for (Sale sale : allSales) {
-            if (sale.getIsPurchase() == true) {
-                for (Song song : sale.getSongs()) {
-                    allPurchaseSongs.add(song);
-                }
 
+            if (sale.getIsPurchase()) {
+//                allPurchaseSongs.addAll(songRepository.findAllBySalesOrderBySongTitle(sale));
+                allPurchaseSongs.addAll(sale.getSongs());
             }
         }
+
+        return allPurchaseSongs;
+    }
+
+    private List<Song> getAllPurchasedSongSortedByTitle(List<Song> allPurchaseSongs) {
+        allPurchaseSongs.sort((Song s1, Song s2) ->
+                s1.getSongTitle().compareTo(s2.getSongTitle()) );
         return allPurchaseSongs;
     }
 
