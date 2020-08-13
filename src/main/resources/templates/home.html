@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
@@ -370,7 +370,11 @@
 
 
 <!--/.Carousel Wrapper-->
+
 <h4>Songs</h4>
+    <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">
+        <button>List All Purchase Song</button>
+    </a>
 <!--Carousel Wrapper-->
 <div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
 
@@ -415,11 +419,14 @@
                                        | [[${artist.artistName}]]
                                 </th:block>|
                             </p>
+                            <br>[[${song.songPrice}]]<br>
 <!--                            <a class="btn btn-primary">Button</a>-->
                             <!-- Button trigger modal -->
+<!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
+                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" >
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                 Purchase
-                            </button>
+                            </button></a>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -431,12 +438,16 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            ...
+                                        <div class="modal-body" style="color: black">
+                                            Price: [[${song.songPrice}]]
+                                           We will use the credit card on file : [[${currentUser.creditCardNo}]].If you do not want to purchase with that card please cancel and add another form of payment.
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Purchase</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <button class="btn btn-secondary">Change Payment</button>
+                                            <a th:href="@{/purchase/song/{id} (id=${song.id})}">
+                                                <button type="button" class="btn btn-success">Purchase</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
