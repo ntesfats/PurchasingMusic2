@@ -61,7 +61,24 @@ public class CommandLineRunnerBean implements CommandLineRunner {
         jayZ.setHeadShotUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597255995/jayZHeadShot_gknpay.jpg");
         artistRepository.save(jayZ);
 
-//  Creating Album
+//        Artist usher = new Artist("Usher", "Usher description");
+//        usher.setHeadShotUrl();
+//        artistRepository.save(usher);
+//
+//        Artist taylorswift = new Artist("Taylor Swift", "Taylor Swift description");
+//        taylorswift.setHeadShotUrl();
+//        artistRepository.save(taylorswift);
+//
+//        Artist harrystyles = new Artist("Harry Styles", "Harry Styles description");
+//        harrystyles.setHeadShotUrl();
+//        artistRepository.save(harrystyles);
+//
+//        Artist michaeljackson = new Artist("Michael Jackson", "Michael Jackson description");
+//        michaeljackson.setHeadShotUrl();
+//        artistRepository.save(michaeljackson);
+
+
+        //  Creating Album
         Album scorpionAlbum = new Album("Scorpion", 2020, "Scorpion description", drake);
         scorpionAlbum.setAlbumCoverUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597249772/Scorpion_ijyxyc.jpg");
 
@@ -72,6 +89,7 @@ public class CommandLineRunnerBean implements CommandLineRunner {
         Song survivalSong = new Song("Survival", "Hip-Hop/Rap", "2:16",
                 2018, .99, scorpionAlbum,"https://www.youtube.com/embed/QmPjOp9A0g4?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1");
         survivalSong.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250219/survivalSong_rituus.jpg");
+
         Song talkUpSong = new Song("Talk Up (feat. JAY-Z)", "Hip-Hop/Rap", "3:43",
                 2018, 1.99, scorpionAlbum,"https://www.youtube.com/embed/QmPjOp9A0g4?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1");
         talkUpSong.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");

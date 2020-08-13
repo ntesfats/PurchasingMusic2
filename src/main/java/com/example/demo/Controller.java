@@ -27,28 +27,15 @@ public class Controller {
     }
     @RequestMapping("/register")
     public String register(Model model) {
-        model.addAttribute("user",new User());
+        User user = new User();
+        model.addAttribute("user", user);
 
-        return"register";
+        return"registerUser";
     }
     @PostMapping("/processregister")
-    public String processRegisterationPage(
-            @Valid @ModelAttribute("user") User user, BindingResult result, Model model)
-    {
-        if(result.hasErrors()){
-            user.clearPassword();
-            model.addAttribute("user",user);
-            return "register";
-        }
-        else {
-            model.addAttribute("user",user);
-            model.addAttribute("message","New user account created");
-
-            user.setEnabled(true);
-            userRepository.save(user);
-            Role role = new Role(user.getUsername(),"ROLE_USER");
-            roleRepository.save(role);
-        }
+    public String processRegistrationPage(@ModelAttribute User user){
+        userRepository.save(user);
+        userid = user.getId();
         return "index";
     }
     @RequestMapping("/ArtistPage")
