@@ -2,47 +2,58 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8b132b72f2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <title></title>
 </head>
-<header th:replace="base :: navbar1"> </header>
-
 
 <body>
 <div class = "main">
     <form action="#"
-          th:action="@{/processSong}"
+          th:action="@{/admin/song/process}"
           th:object="${song}"
           method="post"
           enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}" />
 
-        Song Title: <input type="text" th:field="*{songTitle}" /><br />
-        Song Genre: <input type="text" th:field="*{songGenre}" /><br />
-        Song Album: <input type="text" th:field="*{songAlbum}" />
-        Song Year <input type="text" th:field="*{songYear}" />
 
-        //Assign an artist to the song
-
-        <select th:field="*{artist.id}">
-            <option th:each="artist : ${artists}"
-                    th:value="${artist.id}"
-                    th:text="${artist.name}"></option>
-        </select>
-
-        //Add a song image
-
-        <div th:each="song : ${songs}">
-            <div th:if="${song.songImageUrl} != null">
-                <img th:src="${song.songImageUrl} width=80 height=80"/>
-                <br/>
-            </div>
-            <p th:text="${song.songTitle}"></p>
-
+        <div class="form-group">
+            <label> Song Title</label>
+            <input type="text" th:field="*{songTitle}"/><br />
         </div>
-        <input type="file" name="file"/><br><br>
-        <input type="submit" value="Enter" />
+
+        <div class="form-group">
+            <label>Song Genre</label>
+            <input type="text" th:field="*{songGenre}" class="form-control"/><br />
+        </div>
+
+        <div class="form-group">
+            <label>Song Year</label>
+            <input type="text" th:field="*{songYear}" class="form-control" />
+        </div>
+
+
+        <div class="form-group">
+            <label>Artist </label>
+            <div th:each="artist : ${artists}">
+                <p>[[${artist.artistName}]]</p>
+                <input th:field="*{artists}" type="checkbox" th:value="${artist.id}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Song Album</label>
+            <div th:each="album : ${albums}">
+                <label > [[${album.albumName}]]</label>
+                <input th:field="*{songAlbum}" type="radio" name="album" th:value="${album.id}"> <br>
+            </div>
+        </div>
+
+
+        <input type="submit" value="Submit" />
 
     </form>
 </div>
