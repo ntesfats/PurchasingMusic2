@@ -21,6 +21,8 @@ public class Controller {
     RoleRepository roleRepository;
     @Autowired
     SaleRepository saleRepository;
+    @Autowired
+    ArtistRepository artistRepository;
 
     @RequestMapping("/")
     public String home(Model model, Principal principal) {
@@ -78,5 +80,6 @@ public class Controller {
 
         return "redirect:/";
     }
+
 
 }
