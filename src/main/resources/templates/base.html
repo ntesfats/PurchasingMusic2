@@ -53,7 +53,8 @@
                 </div>
 
                 <div class="col-sm-4 offset-md-1 py-4">
-                    <a sec:authorize="isAuthenticated()" th:href="@{/purchaseSongs}"> <h4 class="text-white"> View All Songs  </h4> </a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/purchaseSongs}"> <h4 class="text-white"> Purchased Songs </h4> </a>
+                    <a th:href="@{/}" sec:authorize="hasRole('ROLE_ADMIN')">ADMIN</a>
                     <ul class="list-unstyled">
                         <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" class="text-white"> Login </a></li>
                         <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}" class="text-white"> Register </a></li>
