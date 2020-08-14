@@ -30,7 +30,18 @@
     </a>
 </div>
 <br>
-
+<div align="center">
+    <a th:href="@{/admin/artist/add}" sec:authorize="hasRole('ROLE_ADMIN')">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Add Artist</button>
+    </a>
+    <a th:href="@{/admin/album/add}" sec:authorize="hasRole('ROLE_ADMIN')" >
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Add Album</button>
+    </a>
+    <a th:href="@{/admin/song/add}" sec:authorize="hasRole('ROLE_ADMIN')">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Add Song</button>
+    </a>
+</div>
+<br>
 
 <hr class="featurette-divider">
 

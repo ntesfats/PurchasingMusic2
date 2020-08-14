@@ -130,7 +130,7 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
 
         Song song1 = new Song("Billie Jean", "R&B", "4:54",
-                1983, 1.99, scorpionAlbum,"https://www.youtube.com/embed/Kr4EQDVETuA?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1");
+                1983, 1.99, scorpionAlbum,"https://youtu.be/Kr4EQDVETuA");
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
 
