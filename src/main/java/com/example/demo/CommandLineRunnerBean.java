@@ -130,41 +130,41 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
 
         Song song1 = new Song("Billie Jean", "R&B", "4:54",
-                1983, 1.99, scorpionAlbum,"https://youtu.be/Kr4EQDVETuA");
+                1983, 1.99, scorpionAlbum,"https://www.youtube.com/embed/Kr4EQDVETuA");
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
 
         Song song2 = new Song("Bills, Bills, Bills", "R&B", "4:17",
-                1999, 1.99, writingsOnTheWallAlbum,"https://www.youtube.com/embed/zhtd_Ga5xHA?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1"
+                1999, 1.99, writingsOnTheWallAlbum,"https://www.youtube.com/embed/zhtd_Ga5xHA"
         );
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
 
         Song song3 = new Song("If I Ain't Got You", "R&B", "3:51",
-                2003, 1.99, theDiaryOfAliciaKeysAlbum,"https://www.youtube.com/embed/Kr4EQDVETuA?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1"
+                2003, 1.99, theDiaryOfAliciaKeysAlbum,"https://www.youtube.com/embed/aKzxU6-j5q0"
         );
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
 
         Song song4 = new Song("Work It", "R&B", "4:25",
-                2002, 1.99, underConstructionAlbum,"https://www.youtube.com/embed/Mijm6hL87y8?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1"
+                2002, 1.99, underConstructionAlbum,"https://www.youtube.com/embed/Mijm6hL87y8"
         );
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
 
         Song song5 = new Song("Cardigan", "Pop", "3:35",
-                2020, 1.99, folkloreAlbum,"https://www.youtube.com/embed/aVRcXtbbh_w?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1"
+                2020, 1.99, folkloreAlbum,"https://www.youtube.com/embed/aVRcXtbbh_w"
         );
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
 
         Song song7 = new Song("Watermelon Sugar", "Pop", "2:53",
-                1994, 1.99, fineLineAlbum,"https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1"
+                1994, 1.99, fineLineAlbum,"https://www.youtube.com/embed/7-x3uD5z1bQ"
         );
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
         Song song8 = new Song("In My City", "Pop", "3:45",
-                2013, 1.99, fineLineAlbum,"https://www.youtube.com/embed/Zjgq6-5uDtY?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1"
+                2013, 1.99, fineLineAlbum,"https://www.youtube.com/embed/Zjgq6-5uDtY"
         );
         song1.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
