@@ -17,39 +17,94 @@
 
             <p th:if="${message}">[[${message}]]</p>
 
+            <th:block sec:authorize="hasRole('ROLE_USER')">
+                <a th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">
+                    <button>List All Purchase Song</button>
+                </a> <br> <br>
+                <p>Sort Bought Songs By: </p>
+                <ul>
+                    <tap>
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/songTitle?allSong=false}">
+                                <button>Song Title</button>
+                            </a> <br>
+                        </li>
+                        <br>
 
-            <a th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">
-                <button>List All Purchase Song</button>
-            </a> <br>
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/songGenre?allSong=false}">
+                                <button>Song Genre</button>
+                            </a> <br>
+                        </li>
+                        <br>
 
-            Sort By:
-            <ul>
-                <li>
-                    <a th:href="@{/purchaseSong/sortBy/songTitle}">
-                        <button>Song Title</button>
-                    </a>
-                </li>
-<!--                <li>-->
-<!--                    <a th:href="@{/purchaseSong/sortBy/songGenre}">-->
-<!--                        <button>Song Genre</button>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a th:href="@{/purchaseSong/sortBy/songAlbum}">-->
-<!--                        <button>Song Album</button>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a th:href="@{/purchaseSong/sortBy/artistName}">-->
-<!--                        <button>Artist Name</button>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a th:href="@{/purchaseSong/sortBy/songDuration}">-->
-<!--                        <button>Song Duration</button>-->
-<!--                    </a>-->
-<!--                </li>-->
-            </ul>
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/albumName?allSong=false}">
+                                <button>Song Album</button>
+                            </a> <br>
+                        </li>
+                        <br>
+
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/artistName?allSong=false}">
+                                <button>Artist Name</button>
+                            </a> <br>
+                        </li>
+                        <br>
+
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/songDuration?allSong=false}">
+                                <button>Song Duration</button>
+                            </a> <br>
+                        </li>
+                        <br>
+
+                    </tap>
+                </ul>
+            </th:block>
+            <th:block sec:authorize="!hasRole('ROLE_USER')">
+                <p>Sort All Songs By: </p>
+                <ul>
+                    <tap>
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/songTitle?allSong=true}">
+                                <button>Song Title</button>
+                            </a> <br>
+                        </li>
+                        <br>
+
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/songGenre?allSong=true}">
+                                <button>Song Genre</button>
+                            </a> <br>
+                        </li>
+                        <br>
+
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/albumName?allSong=true}">
+                                <button>Song Album</button>
+                            </a> <br>
+                        </li>
+                        <br>
+
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/artistName?allSong=true}">
+                                <button>Artist Name</button>
+                            </a> <br>
+                        </li>
+                        <br>
+
+                        <li>
+                            <a th:href="@{/purchaseSong/sortBy/songDuration?allSong=true}">
+                                <button>Song Duration</button>
+                            </a> <br>
+                        </li>
+                        <br>
+                    </tap>
+                </ul>
+
+            </th:block>
+
 
         </div>
     </div>

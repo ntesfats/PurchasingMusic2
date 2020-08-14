@@ -6,19 +6,51 @@
     <title>Sorting Page</title>
 </head>
 <body>
-    <th:block th:if="sortedByGenre">
-        <ul th:each="song : ${sortedByGenre}">
-            <li>[[${song.songTitle}]]</li>
-        </ul>
-    </th:block>
-
     <th:block th:if="sortedByTitle">
         <ul th:each="song : ${sortedByTitle}">
             <li>[[${song.songTitle}]]</li>
         </ul>
     </th:block>
 
-    sortedByTitle
+    <th:block th:if="sortedByGenre">
+        <ul th:each="song : ${sortedByGenre}">
+            <li> Title: [[${song.songTitle}]]</li>
+            <li> Genre: [[${song.songGenre}]]</li>
+            <hr>
+        </ul>
+    </th:block>
+
+
+    <th:block th:if="sortedByAlbum">
+        <ul th:each="song : ${sortedByAlbum}">
+            <li> Title: [[${song.songTitle}]]</li>
+            <li> Album: [[${song.songAlbum.albumName}]]</li>
+            <hr>
+        </ul>
+    </th:block>
+
+    <th:block th:if="sortedByArtist">
+        <ul th:each="song : ${sortedByArtist}">
+            <li> Title: [[${song.songTitle}]]</li>
+            <li>
+                Artists:
+                <tab th:each="artist : ${song.artists}">
+                    <span>| [[${artist.artistName}]]</span>
+
+                </tab>|
+            </li>
+            <hr>
+        </ul>
+    </th:block>
+
+    <th:block th:if="sortedByDuration">
+        <ul th:each="song : ${sortedByDuration}">
+            <li>Song Title: [[${song.songTitle}]]</li>
+            <li>Duration: [[${song.songDuration}]]</li>
+        </ul>
+    </th:block>
+
+
 
 
 

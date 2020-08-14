@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,7 +27,7 @@ public class Song {
 
 //    private String sample;
     @ManyToMany (fetch = FetchType.EAGER)
-    private Set<Artist> artists;
+    private List<Artist> artists;
 
     @ManyToMany(mappedBy = "songs",
         cascade = CascadeType.REMOVE,
@@ -109,11 +110,11 @@ public class Song {
         this.songImageUrl = songImageUrl;
     }
 
-    public Set<Artist> getArtists() {
+    public List<Artist> getArtists() {
         return artists;
     }
 
-    public void setArtists(Set<Artist> artists) {
+    public void setArtists(List<Artist> artists) {
         this.artists = artists;
     }
 

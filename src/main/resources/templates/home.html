@@ -175,6 +175,9 @@
     <!--/.Slides-->
 
 </div>
+
+<!----------------------------------------------  Featured Artist   --------------------------------->
+
 <!--/.Carousel Wrapper-->
 <br><h4>Featured Artist</h4><br>
 <div class="slideshow"
@@ -203,6 +206,8 @@
 <!--    <a href=# id=next> Next &gt;&gt; </a>-->
 <!--</div>-->
 </div>
+
+<!-----------------------------------   Quarantine Playlist   --------------------------->
 
 <h4>Quarantine Playlist Summer 2020</h4>
 <!--Carousel Wrapper-->
@@ -371,6 +376,8 @@
 
 <!--/.Carousel Wrapper-->
 
+<!-------------------------------------------------    Songs     --------------------------------->
+
 <h4>Songs</h4>
     <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">
         <button>List All Purchase Song</button>
@@ -414,19 +421,22 @@
                         <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
                         <div class="card-body">
                             <h4 class="card-title">[[${song.songTitle}]]</h4>
+
                             <p class="card-text">
                                 <th:block th:each="artist : ${song.artists}">
                                        | [[${artist.artistName}]]
                                 </th:block>|
                             </p>
                             <br>[[${song.songPrice}]]<br>
+                            <br>[[${song.id}]]
 <!--                            <a class="btn btn-primary">Button</a>-->
                             <!-- Button trigger modal -->
 <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
                             <a sec:authorize="isAuthenticated()" class="btn btn-primary" >
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Purchase
-                            </button></a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Purchase
+                                </button>
+                            </a>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -440,6 +450,7 @@
                                         </div>
                                         <div class="modal-body" style="color: black">
                                             Price: [[${song.songPrice}]]
+                                            Song Id: [[${song.id}]]
                                             <span sec:authorize="isAuthenticated()">
                                                 We will use the credit card on file :
                                                 [[${currentUser.creditCardNo}]]
@@ -456,6 +467,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class Artist {
     @ManyToMany (mappedBy = "artists",
             cascade = CascadeType.REMOVE,
             fetch = FetchType.EAGER)
-    private Set<Song> songs;
+    private List<Song> songs;
 
     @OneToMany(mappedBy = "albumOwner",
             cascade = CascadeType.REMOVE,
@@ -66,11 +67,11 @@ public class Artist {
         this.headShotUrl = headShotUrl;
     }
 
-    public Set<Song> getSongs() {
+    public List<Song> getSongs() {
         return songs;
     }
 
-    public void setSongs(Set<Song> songs) {
+    public void setSongs(List<Song> songs) {
         this.songs = songs;
     }
 
