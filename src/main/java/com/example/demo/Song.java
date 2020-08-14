@@ -141,4 +141,11 @@ public class Song {
     public void setSongMusicUrl(String songMusicUrl) {
         this.songMusicUrl = songMusicUrl;
     }
+
+    public String getfullUrl() {
+        String startAndEndUrl = this.songMusicUrl + "?start=30&end=40";
+
+        return startAndEndUrl;
+    }
+
 }

@@ -81,5 +81,25 @@ public class Controller {
         return "redirect:/";
     }
 
+    @RequestMapping("/updatePayment")
+    public String paymentUpdate(Model model, Principal principal){
+        User currentUser = userRepository.findByUsername(principal.getName());
+        model.addAttribute("user", currentUser);
+        model.addAttribute("submit", "update Payment");
+        return "updatePayment";
+    }
 
-}
+    @PostMapping("/processPayment")
+    public String processPayment(@ModelAttribute User user, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "updatePayment";
+        }
+        userRepository.save(user);
+        return "redirect:/";
+    }
+
+
+
+
+
+    }

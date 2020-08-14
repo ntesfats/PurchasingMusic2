@@ -11,6 +11,32 @@
 </head>
 <body>
 
+
+<br>
+<div align="center" class="sort-button" style="padding: 5px 35px">
+    <a th:href="@{/purchaseSong/sortBy/songGenre?allSong=false}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Genre</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/albumName?allSong=false}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Album</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songTitle?allSong=false}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Song</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songDuration?allSong=false}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Duration</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/artistName?allSong=false}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Artist</button>
+    </a>
+</div>
+<br>
+
+
+
 <ul th:each="song : ${purchasedSongs}">
 
 

@@ -57,7 +57,7 @@
                     <ul class="list-unstyled">
                         <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" class="text-white"> Login </a></li>
                         <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}" class="text-white"> Register </a></li>
-                        <li sec:authorize="isAuthenticated()"> <a th:href="@{/}" class="text-white"> Update Payment </a></li>
+                        <li sec:authorize="isAuthenticated()"> <a th:href="@{/updatePayment}" class="text-white"> Update Payment </a></li>
                         <li sec:authorize="isAuthenticated()"> <a th:href="@{/logout}" class="text-white"> Logout </a></li>
                     </ul>
                 </div>

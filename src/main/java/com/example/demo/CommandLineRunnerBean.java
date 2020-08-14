@@ -89,11 +89,11 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
 //  Creating Songs
         Song survivalSong = new Song("Survival", "Hip-Hop/Rap", "2:16",
-                2018, .99, scorpionAlbum,"https://www.youtube.com/embed/QmPjOp9A0g4?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1");
+                2018, .99, scorpionAlbum,"https://www.youtube.com/embed/QmPjOp9A0g4");
         survivalSong.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250219/survivalSong_rituus.jpg");
 
         Song talkUpSong = new Song("Talk Up (feat. JAY-Z)", "Rap", "3:43",
-                2018, 1.99, scorpionAlbum,"https://www.youtube.com/embed/QmPjOp9A0g4?showinfo=0&fs=0&autohide=0&controls=0&disablekb=1");
+                2018, 1.99, scorpionAlbum,"https://www.youtube.com/embed/jnzBYqOWJ5U");
         talkUpSong.setSongImageUrl("https://res.cloudinary.com/dxiriemba/image/upload/v1597250297/elevateSong_hixxk8.jpg");
 
         songRepository.save(survivalSong);

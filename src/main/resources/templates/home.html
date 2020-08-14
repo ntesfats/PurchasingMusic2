@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="base :: BootStrapCSS"></div>
     <title></title>
@@ -9,12 +9,25 @@
 
 
 <br>
-<div class="sort-button" align="center" style="padding: 5px 35px">
-    <button type="button" class="btn btn-outline-light" style="padding: 5px 50px">Genre</button>
-    <button type="button" class="btn btn-outline-light" style="padding: 5px 50px">Album</button>
-    <button type="button" class="btn btn-outline-light" style="padding: 5px 50px">Song</button>
-    <button type="button" class="btn btn-outline-light" style="padding: 5px 50px">Duration</button>
-    <button type="button" class="btn btn-outline-light" style="padding: 5px 50px">Artist</button>
+<div align="center" class="sort-button" style="padding: 5px 35px">
+    <a th:href="@{/purchaseSong/sortBy/songGenre?allSong=true}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Genre</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/albumName?allSong=true}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Album</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songTitle?allSong=true}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Song</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songDuration?allSong=true}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Duration</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/artistName?allSong=true}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Artist</button>
+    </a>
 </div>
 <br>
 
@@ -24,12 +37,12 @@
 <h4>Featured Songs</h4>
 <br>
 <!--Carousel Wrapper-->
-<div id="multi-item-example1" class="carousel slide carousel-multi-item" data-ride="carousel">
+<div class="carousel slide carousel-multi-item" data-ride="carousel" id="multi-item-example1">
 
     <!--Controls-->
     <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example1" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example1" data-slide="next"><i
+        <a class="btn-floating" data-slide="prev" href="#multi-item-example1"><i class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" data-slide="next" href="#multi-item-example1"><i
                 class="fas fa-chevron-right"></i></a>
     </div>
     <!--/.Controls-->
@@ -38,9 +51,9 @@
 
 
     <ol class="carousel-indicators">
-        <li data-target="#multi-item-example1" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example1" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example1" data-slide-to="1"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example1"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example1"></li>
+        <li data-slide-to="1" data-target="#multi-item-example1"></li>
 
     </ol>
 
@@ -54,8 +67,8 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <iframe src="https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&rel=0&fs=0&autohide=0&controls=0&disablekb=1"
-                            width="350" height="260" frameborder="0"></iframe>
+                    <iframe frameborder="0"
+                            height="260" src="https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&rel=0&fs=0&autohide=0&controls=0&disablekb=1" width="350"></iframe>
                     <!--                    <img class="card-img-top"-->
                     <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
                     <div class="card-body-featured">
@@ -68,10 +81,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body-featured" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -83,10 +96,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body-featured" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -98,10 +111,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body-featured" height="260" width="350">
                         <h4 class="card-title"> Card title </h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -119,10 +132,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body-featured" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -134,10 +147,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg">
+                    <div class="card-body-featured" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -149,10 +162,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg">
+                    <div class="card-body-featured" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -164,10 +177,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg">
+                    <div class="card-body-featured" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -189,16 +202,16 @@
 <hr class="featurette-divider">
 <br><h4>Featured Artist</h4><br>
 <div class="slideshow"
-     data-cycle-fx=carousel
-     data-cycle-timeout=0
      data-cycle-carousel-visible=5
+     data-cycle-fx=carousel
      data-cycle-next="#next"
-     data-cycle-prev="#prev"
      data-cycle-pager="#pager"
+     data-cycle-prev="#prev"
+     data-cycle-timeout=0
 >
     <a th:href="@{/ArtistPage}"><img class="image-circle"
-                                     src="https://i.pinimg.com/originals/5d/f0/0e/5df00e7bcbd8e73bbc03d0b78413dd63.jpg"
-                                     height="200" width="200"></a>
+                                     height="200"
+                                     src="https://i.pinimg.com/originals/5d/f0/0e/5df00e7bcbd8e73bbc03d0b78413dd63.jpg" width="200"></a>
     <img class="image-circle" src="http://malsup.github.io/images/beach2.jpg">
     <img class="image-circle" src="http://malsup.github.io/images/beach9.jpg">
     <img class="image-circle" src="http://malsup.github.io/images/beach9.jpg">
@@ -219,21 +232,21 @@
 
 <h4>Quarantine Playlist Summer 2020</h4>
 <!--Carousel Wrapper-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+<div class="carousel slide carousel-multi-item" data-ride="carousel" id="multi-item-example">
 
     <!--Controls-->
     <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+        <a class="btn-floating" data-slide="prev" href="#multi-item-example"><i class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" data-slide="next" href="#multi-item-example"><i
                 class="fas fa-chevron-right"></i></a>
     </div>
     <!--/.Controls-->
 
     <!--Indicators-->
     <ol class="carousel-indicators">
-        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example" data-slide-to="1"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example"></li>
+        <li data-slide-to="1" data-target="#multi-item-example"></li>
 
     </ol>
 
@@ -249,8 +262,8 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <iframe src="https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&rel=0&fs=0&autohide=0&controls=0&disablekb=1"
-                            width="350" height="260" frameborder="0"></iframe>
+                    <iframe frameborder="0"
+                            height="260" src="https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&rel=0&fs=0&autohide=0&controls=0&disablekb=1" width="350"></iframe>
                     <!--                    <img class="card-img-top"-->
                     <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
                     <div class="card-body">
@@ -263,10 +276,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -278,10 +291,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -293,10 +306,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -314,10 +327,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">
+                    <div class="card-body" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -329,10 +342,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg">
+                    <div class="card-body" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -344,10 +357,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg">
+                    <div class="card-body" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -359,10 +372,10 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg">
+                    <div class="card-body" height="260" width="350">
                         <h4 class="card-title">Card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
@@ -385,32 +398,60 @@
 
 <hr class="featurette-divider">
 
-<font color="red" sec:authorize="isAuthenticated()">
-    <h1 sec:authorize="isAuthenticated()" > Payment Term </h1>
-    <p sec:authorize="isAuthenticated()">  We will use the credit card on file :
-        [[${currentUser.creditCardNo}]]
-        If you do not want to purchase with that card please cancel and add another form of payment.
-    </p>
 
-</font>
-<hr class="featurette-divider" sec:authorize="isAuthenticated()">
 <h4>Songs</h4>
 <!--Carousel Wrapper-->
-<div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
+<hr class="featurette-divider" sec:authorize="isAuthenticated()">
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" sec:authorize="isAuthenticated()">
+    <h4 sec:authorize="isAuthenticated()" > View Payment </h4>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color: black">
+
+                <p sec:authorize="isAuthenticated()">  We will use the credit card on file :
+                    [[${currentUser.creditCardNo}]]
+                    If you do not want to purchase with that card please cancel and add another form of payment.
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a th:href="@{/updatePayment}"> <button type="button" class="btn btn-primary">Update Payment</button> </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr class="featurette-divider" sec:authorize="isAuthenticated()">
+
+<div class="carousel slide carousel-multi-item" data-ride="carousel" id="multi-item-example3">
 
     <!--Controls-->
     <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example3" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example3" data-slide="next"><i
+        <a class="btn-floating" data-slide="prev" href="#multi-item-example3"><i class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" data-slide="next" href="#multi-item-example3"><i
                 class="fas fa-chevron-right"></i></a>
     </div>
     <!--/.Controls-->
 
     <!--Indicators-->
     <ol class="carousel-indicators">
-        <li data-target="#multi-item-example3" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example3" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example3" data-slide-to="1"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example3"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example3"></li>
+        <li data-slide-to="1" data-target="#multi-item-example3"></li>
 
     </ol>
 
@@ -431,7 +472,7 @@
                 <div class="col-md-3" style="float:left">
                     <div class="card mb-2">
 
-                        <iframe th:src="${song.songMusicUrl}" width="350" height="260" frameborder="0"></iframe>
+                        <iframe frameborder="0" height="260" th:src="${song.getfullUrl()}" width="350"></iframe>
                         <!--                    <img class="card-img-top"-->
                         <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
                         <div class="card-body">
@@ -445,8 +486,8 @@
                             <!--                            <a class="btn btn-primary">Button</a>-->
                             <!-- Button trigger modal -->
                             <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
-                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchase/song/{id} (id=${song.id})}">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <a class="btn btn-primary" sec:authorize="isAuthenticated()" th:href="@{/purchase/song/{id} (id=${song.id})}">
+                                <button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal" type="button">
                                     Purchase
                                 </button> </a>
                         </div>
