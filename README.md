@@ -1,5 +1,7 @@
-# 
-"purchaseSong" 
+# purchaseSong 
+
+    Deployed on Heroku: https://purchase-song.herokuapp.com
+
 
 By
 Amaya , Nahom , Joyce , Cassie
