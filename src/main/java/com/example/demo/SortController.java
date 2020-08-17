@@ -40,9 +40,10 @@ public class SortController {
 //    }
 
 
-    @GetMapping("purchaseSongs/{id}")
-    public String showPurchasedSongs(@PathVariable("id")long id, Model model){
-        List<Song> allPurchaseSongs = getAllPurchasedSongs(id);
+    @RequestMapping("/purchaseSongs")
+    public String showPurchasedSongs(Model model, Principal principal){
+        User currentUser = userRepository.findByUsername(principal.getName());
+        List<Song> allPurchaseSongs = getAllPurchasedSongs(currentUser.getId());
 
         model.addAttribute("purchasedSongs", allPurchaseSongs);
 

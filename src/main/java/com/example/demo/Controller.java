@@ -21,6 +21,8 @@ public class Controller {
     RoleRepository roleRepository;
     @Autowired
     SaleRepository saleRepository;
+    @Autowired
+    ArtistRepository artistRepository;
 
     @RequestMapping("/")
     public String home(Model model, Principal principal) {
@@ -79,4 +81,25 @@ public class Controller {
         return "redirect:/";
     }
 
-}
+    @RequestMapping("/updatePayment")
+    public String paymentUpdate(Model model, Principal principal){
+        User currentUser = userRepository.findByUsername(principal.getName());
+        model.addAttribute("user", currentUser);
+        model.addAttribute("submit", "update Payment");
+        return "updatePayment";
+    }
+
+    @PostMapping("/processPayment")
+    public String processPayment(@ModelAttribute User user, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "updatePayment";
+        }
+        userRepository.save(user);
+        return "redirect:/";
+    }
+
+
+
+
+
+    }

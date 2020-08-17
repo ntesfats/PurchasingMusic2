@@ -3,17 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Purchased Songs</title>
+
+    <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
+
+
+<header th:replace="base :: navbar1"> </header>
 </head>
 <body>
 
+
+<br>
+<div align="center" class="sort-button" style="padding: 5px 35px">
+    <a th:href="@{/purchaseSong/sortBy/songGenre?allSong=false}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Genre</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/albumName?allSong=false}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Album</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songTitle?allSong=false}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Song</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songDuration?allSong=false}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Duration</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/artistName?allSong=false}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Artist</button>
+    </a>
+</div>
+<br>
+
+
+
 <ul th:each="song : ${purchasedSongs}">
 
-    <li>[[${song.songTitle}]]</li>
+
     <div class="carousel-inner" role="listbox" style="background-color: black">
 
         <!--First slide-->
         <div class="carousel-item active">
-            <th:block th:each="song : ${purchasedSongs}">
+
 
 
                 <div class="col-md-3" style="float:left">
@@ -36,10 +67,13 @@
         <!--/.Slides-->
 
     </div>
+                </div>
+        </div>
+    </div>
+                </ul>
 
+<div th:replace="base :: footter3"> </div>
 
-
-</ul>
-
+<div th:replace="base :: BootStrapScript"> </div>
 </body>
 </html>

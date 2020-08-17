@@ -1,36 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/8b132b72f2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-
-
+    <div th:replace="base :: BootStrapCSS"></div>
     <title></title>
 </head>
+<header th:replace="base :: navbar1"> </header>
 <body>
+
+
 <br>
-<h4>Featured Songs</h4>
+<div align="center" class="sort-button" style="padding: 5px 35px">
+    <a th:href="@{/purchaseSong/sortBy/songGenre?allSong=true}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Genre</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/albumName?allSong=true}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Album</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songTitle?allSong=true}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Song</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/songDuration?allSong=true}">
+
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Duration</button>
+    </a>
+    <a th:href="@{/purchaseSong/sortBy/artistName?allSong=true}">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Artist</button>
+    </a>
+</div>
+<br>
+<div align="center">
+    <a th:href="@{/admin/artist/add}" sec:authorize="hasRole('ROLE_ADMIN')">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Add Artist</button>
+    </a>
+    <a th:href="@{/admin/album/add}" sec:authorize="hasRole('ROLE_ADMIN')" >
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Add Album</button>
+    </a>
+    <a th:href="@{/admin/song/add}" sec:authorize="hasRole('ROLE_ADMIN')">
+        <button class="btn btn-outline-light" style="padding: 5px 50px" type="button">Add Song</button>
+    </a>
+</div>
+<br>
+
+<hr class="featurette-divider">
+
+<h4>Coming Soon!</h4>
 <br>
 <!--Carousel Wrapper-->
-<div id="multi-item-example1" class="carousel slide carousel-multi-item" data-ride="carousel">
+<div class="carousel slide carousel-multi-item" data-ride="carousel" id="multi-item-example1">
 
     <!--Controls-->
     <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example1" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example1" data-slide="next"><i
+        <a class="btn-floating" data-slide="prev" href="#multi-item-example1"><i class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" data-slide="next" href="#multi-item-example1"><i
                 class="fas fa-chevron-right"></i></a>
     </div>
     <!--/.Controls-->
 
     <!--Indicators-->
+
+
     <ol class="carousel-indicators">
-        <li data-target="#multi-item-example1" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example1" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example1" data-slide-to="1"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example1"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example1"></li>
+        <li data-slide-to="1" data-target="#multi-item-example1"></li>
 
     </ol>
 
@@ -44,59 +78,53 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <iframe src="https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&rel=0&fs=0&autohide=0&controls=0&disablekb=1"
-                            width="350" height="260" frameborder="0"></iframe>
-                    <!--                    <img class="card-img-top"-->
+                    <iframe src="https://www.youtube.com/embed/7-7NqHtpSdQ?start=45&end=60" width="350" frameborder="0"></iframe>
+<!--                    <iframe frameborder="0"-->
+<!--                            height="260" src="https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&rel=0&fs=0&autohide=0&controls=0&disablekb=1" width="350"></iframe>-->
+<!--                    &lt;!&ndash;                    <img class="card-img-top"&ndash;&gt;-->
                     <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
                     <div class="card-body-featured">
-                        <h4 class="card-title">Watermelon Sugar</h4>
-                        <p class="card-text">By Harry Styles</p>
-                        <a class="btn btn-primary">Button</a>
+                        <h4 class="card-title">ROCKSTAR</h4>
+                        <p class="card-text">Dababy</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
+                    <iframe src="https://www.youtube.com/embed/mP9GihGnZ3M?start=20&end=35" width="350"frameborder="0"></iframe>
+<!--                    <img alt="Card image cap"-->
+<!--                         class="card-img-top"-->
+<!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">-->
+                    <div class="card-body-featured" height="260" width="350">
+                        <h4 class="card-title">ROXANNE</h4>
+                        <p class="card-text">Arizona Zervas</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
+                    <iframe src="https://www.youtube.com/embed/D0ykb30g4s4?start=20&end=35" width="350" frameborder="0"></iframe>
+<!--                    <img alt="Card image cap"-->
+<!--                         class="card-img-top"-->
+<!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">-->
+                    <div class="card-body-featured" height="260" width="350">
+                        <h4 class="card-title">7 RINGS</h4>
+                        <p class="card-text"> Ariana Grande</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
+                    <iframe src="https://www.youtube.com/embed/qDRORgoZxZU?start=20&end=35" width="350" frameborder="0"></iframe>
+<!--                    <img alt="Card image cap"-->
+<!--                         class="card-img-top"-->
+<!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg">-->
+                    <div class="card-body-featured" height="260" width="350">
+                        <h4 class="card-title"> ME TOO</h4>
+                        <p class="card-text">Meghan Trainer</p>
                     </div>
                 </div>
             </div>
@@ -109,95 +137,41 @@
 
             <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
+                    <iframe src="https://www.youtube.com/embed/O-zpOMYRi0w?start=20&end=35" width="350" frameborder="0"></iframe>
+                    <div class="card-body-featured" height="260" width="350">
+                        <h4 class="card-title">FANCY</h4>
+                        <p class="card-text">IGGY AZELEA</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body-featured" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
         <!--/.Second slide-->
 
-
+        </div>
     </div>
     <!--/.Slides-->
 
 </div>
-
-<!----------------------------------------------  Featured Artist   --------------------------------->
-
 <!--/.Carousel Wrapper-->
+<hr class="featurette-divider">
 <br><h4>Featured Artist</h4><br>
 <div class="slideshow"
-     data-cycle-fx=carousel
-     data-cycle-timeout=0
      data-cycle-carousel-visible=5
+     data-cycle-fx=carousel
      data-cycle-next="#next"
-     data-cycle-prev="#prev"
      data-cycle-pager="#pager"
+     data-cycle-prev="#prev"
+     data-cycle-timeout=0
 >
     <a th:href="@{/ArtistPage}"><img class="image-circle"
-                                     src="https://i.pinimg.com/originals/5d/f0/0e/5df00e7bcbd8e73bbc03d0b78413dd63.jpg"
-                                     height="200" width="200"></a>
-    <img class="image-circle" src="http://malsup.github.io/images/beach2.jpg">
-    <img class="image-circle" src="http://malsup.github.io/images/beach9.jpg">
-    <img class="image-circle" src="http://malsup.github.io/images/beach9.jpg">
-    <img class="image-circle" src="http://malsup.github.io/images/beach9.jpg">
-    <img class="image-circle" src="http://malsup.github.io/images/beach9.jpg">
-    <img class="image-circle" src="http://malsup.github.io/images/beach9.jpg">
-
+                                     height="200"
+                                     src="https://i.pinimg.com/originals/5d/f0/0e/5df00e7bcbd8e73bbc03d0b78413dd63.jpg" width="200"></a>
+    <img class="image-circle" src="https://akns-images.eonline.com/eol_images/Entire_Site/2018116/rs_1080x1080-180216142815-destinys-child-album-cover.jpg?fit=around|1080:auto&output-quality=90&crop=1080:auto;center,top.jpg" width="200" height="200">
+    <img class="image-circle" src="https://www.gstatic.com/tv/thumb/persons/280087/280087_v9_bb.jpg" width="200" height="200">
+    <img class="image-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/77/Missy_Elliot.jpg" width="200" height="200">
+    <img class="image-circle" src="https://hips.hearstapps.com/harpersbazaaruk.cdnds.net/17/19/1494325337-tlc.jpg" width="200" height="200">
+    <img class="image-circle" src="https://i.insider.com/5d2f3bc6ba15961b544b3e64?width=600&format=jpeg&auto=webp.jpg" width="200" height="200">
+    <img class="image-circle" src="https://media.pitchfork.com/photos/5c7d4c1b4101df3df85c41e5/1:1/w_600/Dababy_BabyOnBaby.jpg" width="200" height="200">
 </div>
 
 
@@ -207,197 +181,66 @@
 <!--</div>-->
 </div>
 
-<!-----------------------------------   Quarantine Playlist   --------------------------->
+<hr class="featurette-divider">
 
-<h4>Quarantine Playlist Summer 2020</h4>
+
+
+<hr class="featurette-divider">
+
+
+<h4>Songs</h4>
 <!--Carousel Wrapper-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+<hr class="featurette-divider" sec:authorize="isAuthenticated()">
 
-    <!--Controls-->
-    <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-                class="fas fa-chevron-right"></i></a>
-    </div>
-    <!--/.Controls-->
 
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example" data-slide-to="1"></li>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" sec:authorize="isAuthenticated()">
+    <h4 sec:authorize="isAuthenticated()" > View Payment </h4>
+</button>
 
-    </ol>
-
-    <!--/.Indicators-->
-    <br>
-
-    <br>
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox" style="background-color: black">
-
-        <!--First slide-->
-        <div class="carousel-item active">
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <iframe src="https://www.youtube.com/embed/7-x3uD5z1bQ?showinfo=0&rel=0&fs=0&autohide=0&controls=0&disablekb=1"
-                            width="350" height="260" frameborder="0"></iframe>
-                    <!--                    <img class="card-img-top"-->
-                    <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <h4 class="card-title">Watermelon Sugar</h4>
-                        <p class="card-text">By Harry Styles</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body" style="color: black">
 
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
+                <p sec:authorize="isAuthenticated()">  We will use the credit card on file :
+                    [[${currentUser.creditCardNo}]]
+                    If you do not want to purchase with that card please cancel and add another form of payment.
+                </p>
+
             </div>
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a th:href="@{/updatePayment}"> <button type="button" class="btn btn-primary">Update Payment</button> </a>
             </div>
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        <!--/.First slide-->
-
-        <!--Second slide-->
-        <div class="carousel-item">
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                    <img class="card-img-top"
-                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                         alt="Card image cap">
-                    <div class="card-body" width="350" height="260">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!--/.Second slide-->
-
-
     </div>
-    <!--/.Slides-->
-
 </div>
 
 
-<!--/.Carousel Wrapper-->
+<hr class="featurette-divider" sec:authorize="isAuthenticated()">
 
-<!-------------------------------------------------    Songs     --------------------------------->
-
-<h4>Songs</h4>
-    <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">
-        <button>List All Purchase Song</button>
-    </a>
-<!--Carousel Wrapper-->
-<div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
+<div class="carousel slide carousel-multi-item" data-ride="carousel" id="multi-item-example3">
 
     <!--Controls-->
     <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example3" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example3" data-slide="next"><i
+        <a class="btn-floating" data-slide="prev" href="#multi-item-example3"><i class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" data-slide="next" href="#multi-item-example3"><i
                 class="fas fa-chevron-right"></i></a>
     </div>
     <!--/.Controls-->
 
     <!--Indicators-->
     <ol class="carousel-indicators">
-        <li data-target="#multi-item-example3" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example3" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example3" data-slide-to="1"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example3"></li>
+        <li class="active" data-slide-to="0" data-target="#multi-item-example3"></li>
+        <li data-slide-to="1" data-target="#multi-item-example3"></li>
 
     </ol>
 
@@ -409,6 +252,8 @@
     <div class="carousel-inner" role="listbox" style="background-color: black">
 
         <!--First slide-->
+
+
         <div class="carousel-item active">
             <th:block th:each="song : ${songs}">
 
@@ -416,58 +261,24 @@
                 <div class="col-md-3" style="float:left">
                     <div class="card mb-2">
 
-                        <iframe th:src="${song.songMusicUrl}" width="350" height="260" frameborder="0"></iframe>
+                        <iframe frameborder="0" height="260" th:src="${song.getfullUrl()}" width="350"></iframe>
                         <!--                    <img class="card-img-top"-->
                         <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
                         <div class="card-body">
                             <h4 class="card-title">[[${song.songTitle}]]</h4>
-
                             <p class="card-text">
                                 <th:block th:each="artist : ${song.artists}">
-                                       | [[${artist.artistName}]]
+                                    | [[${artist.artistName}]]
                                 </th:block>|
                             </p>
                             <br>[[${song.songPrice}]]<br>
-                            <br>[[${song.id}]]
-<!--                            <a class="btn btn-primary">Button</a>-->
+                            <!--                            <a class="btn btn-primary">Button</a>-->
                             <!-- Button trigger modal -->
-<!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
-                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" >
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
+                            <a class="btn btn-primary" sec:authorize="isAuthenticated()" th:href="@{/purchase/song/{id} (id=${song.id})}">
+                                <button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal" type="button">
                                     Purchase
-                                </button>
-                            </a>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body" style="color: black">
-                                            Price: [[${song.songPrice}]]
-                                            Song Id: [[${song.id}]]
-                                            <span sec:authorize="isAuthenticated()">
-                                                We will use the credit card on file :
-                                                [[${currentUser.creditCardNo}]]
-                                                If you do not want to purchase with that card please cancel and add another form of payment.
-                                            </span>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                            <button class="btn btn-secondary">Change Payment</button>
-                                            <a th:href="@{/purchase/song/{id} (id=${song.id})}">
-                                                <button type="button" class="btn btn-success">Purchase</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                                </button> </a>
                         </div>
                     </div>
                 </div>
@@ -476,24 +287,11 @@
         <!--/.Slides-->
 
     </div>
-    <!--/.Carousel Wrapper-->
+    <hr class="featurette-divider">
 
+    <div th:replace="base :: footter3"> </div>
 
-    <!--<img src="https://pbs.twimg.com/media/EJrBxeCWkAAXS8l.jpg" id="showImage" alt="">-->
-
-    <!--<iframe src="https://www.youtube.com/embed/E07s5ZYygMg?vq=hd1080&autoplay=1&showinfo=0&rel=0&iv_load_policy=3&fs=0&color=white"-->
-    <!--        width="560" height="315" frameborder="0"></iframe>-->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-
-
+    <div th:replace="base :: BootStrapScript"> </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="base :: metaTags"></div>
+
+    <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
+    <title>Registration</title>
+</head>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Add padding to containers */
+    .form {
+        padding: 16px;
+        background-color: white;
+    }
+
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+    /* Overwrite default styles of hr */
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit button */
+    .registerbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+    .registerbtn:hover {
+        opacity: 1;
+    }
+
+    /* Add a blue text color to links */
+    a {
+        color: dodgerblue;
+    }
+
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+</style>
+<body>
+
+<div th:replace="base :: navbar1"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!--                <h4>New user Registration</h4>-->
+
+            <form th:action="@{/processPayment}" th:object="${user}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{enabled}">
+                <div class="form-group">
+
+                    <div class="form">
+                        <h1>Please Update your Payment </h1>
+
+                        <input type="hidden" placeholder="First Name" id="firstName"
+                               th:field="*{firstName}"><br>
+
+
+                        <input type="hidden" id="lastName" class="form-control" placeholder="Last Name"
+                               th:field="*{lastName}"><br>
+
+
+                        <input type="hidden" id="email" placeholder="email@domain.com"
+                               th:field="*{email}"><br>
+
+
+                        <input type="hidden" id="username" placeholder="Username"
+                               th:field="*{username}"><br>
+
+
+                        <input type="hidden" placeholder="Enter Password" name="psw" id="psw"
+                               th:field="*{password}"><br>
+
+
+                        <input type="hidden" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat"><br>
+
+
+                        <hr>
+                        <div class="DTitle1">
+                            ENTER YOUR PAYMENT INFORMATION
+                        </div>
+                        <img src="https://support.savethechildren.org/images/amex_small.gif" height="35">
+                        <img src="https://support.savethechildren.org/images/payment/paypal-logo.png" height="35">
+                        <img src="https://support.savethechildren.org/wrpr/images/logos/google-pay-box-logo.png " height="35"><br>
+
+                        <label for="nameOnCard"><b>Name</b></label>
+                        <input type="text" id="nameOnCard" placeholder="Name As Appears On Card"
+                               th:field="*{nameOnCard}"><br>
+
+                        <label for="address1"><b>Address Line 1</b></label>
+                        <input type="text" id="address1" placeholder="Address Line 1"
+                               th:field="*{address1}"><br>
+
+                        <label for="address2"><b>Address Line 1</b></label>
+                        <input type="text" id="address2" placeholder="Address Line 2"
+                               th:field="*{address2}"><br>
+
+                        <label for="city"><b>City</b></label>
+                        <input type="text" id="city" placeholder="City"
+                               th:field="*{city}"><br>
+
+                        <label for="state"><b>State</b></label>
+                        <input type="text" id="state" placeholder="State"
+                               th:field="*{state}"><br>
+
+                        <label for="zip"><b>Zip</b></label>
+                        <input type="text" id="zip" placeholder="zip"
+                               th:field="*{zip}"><br>
+
+                        <label for="creditCardNo"><b>Credit Card Number</b></label>
+                        <input type="text" id="creditCardNo" placeholder="Credit Card Number"
+                               th:field="*{creditCardNo}"><br>
+                        <span id="creditCard-error-message"></span>
+
+                        <label for="cvv"><b>CVV</b></label>
+                        <input type="text" id="cvv" placeholder="CVV"
+                               th:field="*{cvv}"><br>
+
+                        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                        <p>We will not charge your card unless you explicitly purchase a song from our site.</p>
+
+                        <button type="submit" class="registerbtn"> Update </button>
+                    </div>
+
+                </div><br>
+
+                <div th:replace="base :: BootStrapScripts"></div>
+                <!--Validation JavaScript-->
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,97 +1,118 @@
 <!doctype html>
 <html lang="en" xmlns:th="www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head>
     <!-- Required meta tags -->
     <div th:fragment="metaTags">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </div>
-
     <!-- Bootstrap CSS -->
     <div th:fragment="BootStrapAndMainCSSLinks">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
               integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
               crossorigin="anonymous">
-        <link rel="stylesheet" th:href="@{/styleSheet/main.css}">
+        <link rel="stylesheet" th:href="@{/css/main.css}">
     </div>
 
-    <title></title>
+    <div th:fragment="BootStrapCSS">
+        <meta charset="UTF-8">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/8b132b72f2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+
+    </div>
+
+
+    <div th:fragment="style">
+
+        <title> Home Page </title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+        <!-- Bootstrap core CSS -->
+        <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="https://getbootstrap.com/docs/4.0/examples/album/album.css" rel="stylesheet">
+        <!-- Carouse CSS -->
+        <link href="https://getbootstrap.com/docs/4.0/examples/carousel/carousel.css" rel="stylesheet">
+
+    </div>
 </head>
 <body>
 
 <!-- NavBar -->
-<div th:fragment="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" th:href="@{/}">LOGO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/register}">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link" th:href="@{/login}">Login</a>
-                </li>
-              
+<header th:fragment="navbar1">
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" th:href="@{/song/viewAll}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Resume
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/song/add}">Add</a>
-                        <a class="dropdown-item" th:href="@{/song/viewAll}">View All</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
+                    <a th:href="@{/}"><h4 class="text-white">Home</h4></a>
+                </div>
 
-                <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}">login</a>
-                </li>
-
-
-
-
-            </ul>
-<!--            Search Form-->
-<!--            <form class="form-inline my-2 my-lg-0">-->
-<!--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--            </form>-->
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <a sec:authorize="isAuthenticated()" th:href="@{/purchaseSongs}"> <h4 class="text-white"> Purchased Songs </h4> </a>
+                    <a th:href="@{/}" sec:authorize="hasRole('ROLE_ADMIN')">ADMIN</a>
+                    <ul class="list-unstyled">
+                        <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" class="text-white"> Login </a></li>
+                        <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}" class="text-white"> Register </a></li>
+                        <li sec:authorize="isAuthenticated()"> <a th:href="@{/updatePayment}" class="text-white"> Update Payment </a></li>
+                        <li sec:authorize="isAuthenticated()"> <a th:href="@{/logout}" class="text-white"> Logout </a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </nav>
-</div>
+    </div>
 
-<!--Main Part -->
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<h1>Base</h1>
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>MusicBox</strong>
+            </a>
 
-
-
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</header>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<div th:fragment="BootStrapScripts">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+<div th:fragment="footter3">
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2020-2021 MC, JAVA BootCamp. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+</div>
+
+<div th:fragment="BootStrapScript">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+
+</div>
+
+<div th:fragment="BootStrapScripts">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+
 </div>
 
 </body>

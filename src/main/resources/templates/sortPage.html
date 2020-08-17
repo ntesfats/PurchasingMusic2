@@ -4,54 +4,189 @@
 <head>
     <meta charset="UTF-8">
     <title>Sorting Page</title>
+    <div th:replace="base :: metaTags"></div>
+
+    <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
 </head>
+
 <body>
-    <th:block th:if="sortedByTitle">
-        <ul th:each="song : ${sortedByTitle}">
-            <li>[[${song.songTitle}]]</li>
-        </ul>
-    </th:block>
 
-    <th:block th:if="sortedByGenre">
-        <ul th:each="song : ${sortedByGenre}">
-            <li> Title: [[${song.songTitle}]]</li>
-            <li> Genre: [[${song.songGenre}]]</li>
-            <hr>
-        </ul>
-    </th:block>
+<div th:replace="base :: navbar1"></div>
+
+<div class="carousel-inner" role="listbox" style="background-color: black">
+
+    <!--First slide-->
 
 
+    <div class="carousel-item active">
+        <th:block th:if="sortedByTitle">
+            <ul th:each="song : ${sortedByTitle}">
+
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2">
+
+                    <iframe frameborder="0" height="260" th:src="${song.getfullUrl()}" width="350"></iframe>
+                    <!--                    <img class="card-img-top"-->
+                    <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
+                    <div class="card-body">
+                        <h4 class="card-title">[[${song.songTitle}]]</h4>
+                        <p class="card-text"><br>
+                            <th:block th:each="artist : ${song.artists}">
+                                | [[${artist.artistName}]]
+                            </th:block>|
+                        </p>
+                        <br>[[${song.songPrice}]]<br>
+                        <!--                            <a class="btn btn-primary">Button</a>-->
+                        <!-- Button trigger modal -->
+                        <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
+
+                    </div>
+                </div>
+            </div>
+            </ul>
+        </th:block>
+    </div>
+    <!--/.Slides-->
+
+</div>
+
+<div class="carousel-inner" role="listbox" style="background-color: black">
+
+    <!--First slide-->
+
+
+    <div class="carousel-item active">
+        <th:block th:if="sortedByGenre">
+            <ul th:each="song : ${sortedByGenre}">
+
+
+                <div class="col-md-3" style="float:left">
+                    <div class="card mb-2">
+
+                        <iframe frameborder="0" height="260" th:src="${song.getfullUrl()}" width="350"></iframe>
+                        <!--                    <img class="card-img-top"-->
+                        <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
+                        <div class="card-body">
+                            <h4 class="card-title">[[${song.songTitle}]]</h4>
+                            <p class="card-text">[[${song.songGenre}]]<br>
+                                <th:block th:each="artist : ${song.artists}">
+                                    | [[${artist.artistName}]]
+                                </th:block>|
+                            </p>
+                            <br>[[${song.songPrice}]]<br>
+                            <!--                            <a class="btn btn-primary">Button</a>-->
+                            <!-- Button trigger modal -->
+                            <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
+
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </th:block>
+    </div>
+    <!--/.Slides-->
+
+</div>
+<div class="carousel-item active">
     <th:block th:if="sortedByAlbum">
         <ul th:each="song : ${sortedByAlbum}">
-            <li> Title: [[${song.songTitle}]]</li>
-            <li> Album: [[${song.songAlbum.albumName}]]</li>
-            <hr>
+
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2">
+
+                    <iframe frameborder="0" height="260" th:src="${song.getfullUrl()}" width="350"></iframe>
+                    <!--                    <img class="card-img-top"-->
+                    <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
+                    <div class="card-body">
+                        <h4 class="card-title">[[${song.songTitle}]]</h4>
+                        <p class="card-text">[[${song.songAlbum.albumName}]]<br>
+                            <th:block th:each="artist : ${song.artists}">
+                                | [[${artist.artistName}]]
+                            </th:block>|
+                        </p>
+                        <br>[[${song.songPrice}]]<br>
+                        <!--                            <a class="btn btn-primary">Button</a>-->
+                        <!-- Button trigger modal -->
+                        <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
+
+                    </div>
+                </div>
+            </div>
         </ul>
     </th:block>
+</div>
+<!--/.Slides-->
 
+</div>
+
+<div class="carousel-item active">
     <th:block th:if="sortedByArtist">
         <ul th:each="song : ${sortedByArtist}">
-            <li> Title: [[${song.songTitle}]]</li>
-            <li>
-                Artists:
-                <tab th:each="artist : ${song.artists}">
-                    <span>| [[${artist.artistName}]]</span>
 
-                </tab>|
-            </li>
-            <hr>
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2">
+
+                    <iframe frameborder="0" height="260" th:src="${song.getfullUrl()}" width="350"></iframe>
+                    <!--                    <img class="card-img-top"-->
+                    <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
+                    <div class="card-body">
+                        <h4 class="card-title">[[${song.songTitle}]]</h4>
+                        <p class="card-text">
+                            <th:block th:each="artist : ${song.artists}">
+                                | [[${artist.artistName}]]
+                            </th:block>|
+                        </p>
+                        <br>[[${song.songPrice}]]<br>
+                        <!--                            <a class="btn btn-primary">Button</a>-->
+                        <!-- Button trigger modal -->
+                        <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
+
+                    </div>
+                </div>
+            </div>
         </ul>
     </th:block>
+</div>
+<!--/.Slides-->
 
+</div>
+<div class="carousel-item active">
     <th:block th:if="sortedByDuration">
         <ul th:each="song : ${sortedByDuration}">
-            <li>Song Title: [[${song.songTitle}]]</li>
-            <li>Duration: [[${song.songDuration}]]</li>
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2">
+
+                    <iframe frameborder="0" height="260" th:src="${song.getfullUrl()}" width="350"></iframe>
+                    <!--                    <img class="card-img-top"-->
+                    <!--                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">-->
+                    <div class="card-body">
+                        <h4 class="card-title">[[${song.songTitle}]]</h4>
+                        <p class="card-text">Duration: [[${song.songDuration}]]<br>
+                            <th:block th:each="artist : ${song.artists}">
+                                | [[${artist.artistName}]]
+                            </th:block>|
+                        </p>
+                        <br>[[${song.songPrice}]]<br>
+                        <!--                            <a class="btn btn-primary">Button</a>-->
+                        <!-- Button trigger modal -->
+                        <!--                            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/purchaseSongs/{id} (id=${currentUser.id})}">-->
+
+                    </div>
+                </div>
+            </div>
         </ul>
     </th:block>
+</div>
+<!--/.Slides-->
+
+</div>
 
 
 
+<div th:replace="base :: BootStrapScripts"></div>
 
 
 </body>

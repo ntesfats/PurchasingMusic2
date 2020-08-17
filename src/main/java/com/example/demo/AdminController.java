@@ -94,13 +94,13 @@ public class AdminController {
 
     @GetMapping("/admin/album/add")
     public String addAlbum(Model model) {
-
+        //  Need to Save Album Cover into DataBase first.
         model.addAttribute("artists", artistRepository.findAll());
         model.addAttribute("album", new Album());
         return "addAlbum";
     }
 
-     // Song processing
+     // Album processing
     @PostMapping("/admin/album/process")
     public String processAlbumForm(@ModelAttribute Album album, BindingResult result) {
         if (result.hasErrors()) {
@@ -110,46 +110,6 @@ public class AdminController {
         albumRepository.save(album);
         return "redirect:/";
     }
-
-
-
-
-
-
-
-    // Find song by ID
-    @RequestMapping(value = "/{song_id}", method = RequestMethod.POST)
-    public Sale getSale(@PathVariable("song_id") int song_id) {
-        return null;
-
-    }
-
-
-
-/*    @RequestMapping("/process")
-    public String process(@ModelAttribute Actor actor,
-                          @RequestParam("file") MultipartFile file) {
-//        First we check if the file sibmitted is empty
-        if (file.isEmpty()) {
-            return "redirect:/add";
-        }
-//        Then we upload the fileto cloudinary
-        try {
-            Map uploadResult = cloudinaryConfig.upload(file.getBytes(),
-                    ObjectUtils.asMap("resourcetype", "auto"));
-            actor.setHeadShot(uploadResult.get("url").toString());
-            actorRepository.save(actor);
-//            We check if there was any error during upload; if so, redirect to the /add opage
-        } catch (IOException e) {
-
-            e.getStackTrace();
-            return "redirect:/add";
-        }
-
-//        If Everything went okay \, we redirect to the home page
-        return "redirect:/";
-    }
-*/
 
 
 }
